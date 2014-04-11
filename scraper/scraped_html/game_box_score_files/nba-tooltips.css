@@ -1,0 +1,19 @@
+/** 
+* droplist tooltips
+* @author jenn
+*/
+
+.tooltip { position: fixed; top: 200px; left: 300px; background: #fff; font-size: 11px; line-height: 1.1em; width: 250px;
+	-webkit-box-shadow: 1px 1px 5px #333; -moz-box-shadow: 1px 1px 5px #333; -o-box-shadow: 1px 1px 5px #333; box-shadow: 1px 1px 5px #333;
+	padding: 10px 10px 10px 5px; border: 1px solid #6b6b6b; font-family: verdana, sans-serif;
+}
+.tooltip h3 { font-size: 1.2em; font-weight: bold; margin: 0; padding: 10px 10px 0px; background: url('../../media/tooltip_highlight_top.png') no-repeat top right;}
+.tooltip p { margin: 0; padding: 10px;  }
+.tooltip-arrow { background: url('../../media/tooltip_arrow.png') top left no-repeat; position: absolute; left: -8px; top: 10px; width: 10px; height: 16px; z-index: 9999;}
+.tooltip-content { background: url('../../media/tooltip_highlight_btm.png') no-repeat bottom right; text-shadow: none; color: #000; text-align: left; }
+.tooltip-static { position: static; }
+
+th .tooltip,
+.tooltip.tooltip-grid { top: 0; left: 0; z-index: 9999; }
+th .tooltip .tooltip-arrow,
+.tooltip.tooltip-grid .tooltip-arrow { background: url('../../media/tooltip_arrow_down.png') top left no-repeat; left: 121px; bottom: -8px; top: auto; width: 16px; height: 10px; }

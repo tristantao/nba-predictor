@@ -1,0 +1,334 @@
+header, nav { display : block; }
+/*
+#nbaHeader{background:#006bb5 url('http://i.cdn.turner.com/nba/tmpl_asset/static/nba-cms3-homepage/1096/elements/header/header-bg.jpg') 0 0 no-repeat; background-size: 100% 100%; position:relative;height:139px;margin-bottom:0px;-webkit-box-shadow:inset 0 -1px 1px #050505,0px 1px 4px #474747;-moz-box-shadow:inset 0 -1px 1px #050505,0px 1px 4px #474747;box-shadow:inset 0 -1px 1px #050505,0px 1px 4px #474747;z-index:3; font-family: "Helvetica Neue",Helvetica Neue,Helvetica,Arial,Liberation Sans,sans-serif; line-height:1;}
+*/
+
+
+#site-nav .nav li.navDropDown:hover a {position:relative; z-index:100; color:#000; font-weight:bold; text-shadow:none;}
+#site-nav .nav > li.navDropDown:hover:before{display:block;content:"";width:100%;padding:15px 10px;background:#fff;position:absolute;z-index:0;top:4px;left:-10px;-webkit-border-top-left-radius:4px;-webkit-border-top-right-radius:4px;-moz-border-radius-topleft:4px;-moz-border-radius-topright:4px;border-top-left-radius:4px;border-top-right-radius:4px;-webkit-box-shadow:0 3px 3px 0 rgba(0,0,0,0.5);box-shadow:0 3px 3px 0 rgba(0,0,0,0.5)}
+#site-nav .nav li ul {display:none;}
+#site-nav .nav li .nbaNavDropdown {position:absolute;left:-999em; width:600px;}
+#site-nav .nav li:hover > ul {display:block; width:132px; position:absolute; left:-10px; top:32px; background:#fff; padding-left:0px;}
+
+#site-nav .nav li:hover .nbaNavDropdown {left:-10px;}
+#site-nav .nav li:hover ul li {display:block; float:none; margin-left:0px;}
+#site-nav .nav li:hover ul li a {display:block; width:132px; text-indent:20px;}
+#site-nav .nav li:hover ul li a:hover {color:#06c; text-decoration:underline;}
+
+#nbaHeader{ margin-bottom:0px !important; background:#006bb5 url('/media/header-bg-1056.jpg') 0 0 no-repeat !important; background-size: 100% 100%; position:relative;height:139px;margin-bottom:0px;-webkit-box-shadow:inset 0 -1px 1px #050505,0px 1px 4px #474747;-moz-box-shadow:inset 0 -1px 1px #050505,0px 1px 4px #474747;box-shadow:inset 0 -1px 1px #050505,0px 1px 4px #474747;z-index:3; font-family: "Helvetica Neue",Helvetica Neue,Helvetica,Arial,Liberation Sans,sans-serif; line-height:1;}
+#site-nav li.statsNavTeams {position:static !important;}
+#site-nav li.statsNavTeams span.nolink {display:block;}
+#site-nav .nav > li.nbaTeams a {position:relative; }
+
+#site-nav .nav > li.nbaTeams:hover:before {display:none;}
+#site-nav .nav > li.nbaTeams:hover .nolink:before{display:block;content:"";width:40px;padding:15px 10px;background:#fff;position:absolute;z-index:-1;top:0px;left:-10px;-webkit-border-top-left-radius:4px;-webkit-border-top-right-radius:4px;-moz-border-radius-topleft:4px;-moz-border-radius-topright:4px;border-top-left-radius:4px;border-top-right-radius:4px; text-align: center }
+
+#site-nav .nbaTeams .statsNavDropDown{position:absolute; width:100%; height:275px; background:#fff;padding-bottom:0px;border-bottom: 5px solid #006fa2; position:absolute;  left:-999em;
+-webkit-box-shadow: 0 3px 3px 0 rgba(0,0,0,0.5);
+box-shadow: 0 3px 3px 0 rgba(0,0,0,0.5); }
+#site-nav .nbaTeams .statsNavDropDown ul {display:block; position:relative; top:0px left:0px !important;}
+#site-nav  li.nbaTeams:hover .statsNavDropdown,
+#site-nav  li.nbaTeams .statsNavDropdown:hover{width:1056px; background:#f2f2f2; /*left:0px !important;*/ display:block !important; overflow:hidden;}
+
+#site-nav .nbaTeams .statsNavDropDown ul ul li {width:220px !important;}
+#site-nav .nbaTeams .statsNavDropDown ul ul li a {color:#000; text-shadow:none; font-weight:normal;}
+#site-nav .nbaTeams .statsNavDropDown > ul {width:528px !important; position:relative !important; top:auto !important; left:auto !important;}
+#site-nav  li:hover .statsNavDropDown ul {position:relative !important; float:left !important; top:0; left:0 !important; width:652px; overflow:hidden;}
+#site-nav .nbaTeams .statsNavDropDown ul li { float:left !important; width:305px; overflow:hidden; }
+#site-nav .nbaTeams .statsNavDropDown ul ul {position:relative !imporant; width:264px !important; left:0px !important;}
+#site-nav .nbaTeams .statsNavDropDown ul ul li {width:220px !important; height:30px;}
+#site-nav .nbaTeams .statsNavDropDown ul ul li a {width:220px; color:#000; text-shadow:none; font-weight:normal; padding-left:20px;}
+#site-nav .nbaTeams .statsNavDropDown .nbaSecondary ul {padding:0 16px 0 0px}
+
+#site-nav .nbaTeams .statsNavDropDown .nbaNavSubheading{display:block;padding:4px 16px 0 16px;font-weight:normal;/*font-size:.875em;*/font-size:14px;font-family:arial;line-height:1.6;text-transform:uppercase;}
+
+/*
+#site-nav .nbaTeams .statsNavDropDown .nbaPrimary{width:528px !important;  height:270px; border-bottom:0; border-right:1px solid #dce0e3; background:#fff; padding-bottom:4px;}
+#site-nav li.nbaTeams .statsNavDropDown .nbaSecondary{width:528px !important;  height:270px; border-top:0;border-left:1px solid #fff; position:absolute; top:0px; left:530px;}
+#site-nav .nbaTeams .statsNavDropDown ul{padding:0 25px; background:transparent !important; }
+*/
+#site-nav .nbaTeams .statsNavDropDown .nbaNavSubheading{display:block;padding:4px 16px 0 16px;font-weight:normal;/*font-size:.875em;*/font-size:14px;font-family:arial;line-height:1.6;text-transform:uppercase;}
+#site-nav .nbaTeams .statsNavDropDown .nbaSecondary{border-top:0;border-left:1px solid #fff; position:absolute; top:0px; left:652px;}
+#site-nav .nbaTeams .statsNavDropDown  ul{padding:0 25px; background:transparent !important; }
+#site-nav .nbaTeams .statsNavDropDown  ul ul li a{display:block; height:25px; position:relative;padding-left:33px;line-height:25px !important; width:180px; margin:0px !important; font-weight:bold !important;}
+
+
+#site-nav li.nbaTeams:hover .statsNavDropDown {left:0px;}
+
+#site-nav .nbaTeams .nbaNavDropdown ul{padding:0 25px; background:transparent !important; }
+
+#site-nav .nbaTeams .statsNavDropdown .nbaPrimary ul{padding:0 16px 0 16px; width:200px; float:left;}
+#site-nav .nbaTeams .nbaNavDropdown ul ul {padding:0; background:transparent !important;}
+#site-nav .nbaTeams .nbaNavDropdown .nbaSecondary ul ul{padding:0; background:transparent !important;}
+#site-nav .nbaTeams .nbaNavDropdown ul ul li{margin-bottom:5px;height:23px;line-height:25px}
+#site-nav .nbaTeams .statsNavDropDown a:before{position:absolute;top:0;left:0;display:block;content:"";background:url('http://i.cdn.turner.com/nba/tmpl_asset/static/nba-cms3-homepage/1316/elements/header/header-sprite.png') -10000px -10000px no-repeat;height:25px;width:25px}
+#site-nav .nbaTeams .statsNavDropDown a.nbaTeamATL:before{background-position:-10px -10px}
+#site-nav .nbaTeams ul ul li a.nbaTeamBOS:before{background-position:-42px -10px}
+#site-nav .nbaTeams ul ul li a.nbaTeamBKN:before,
+#site-nav .nbaTeams ul ul li a.nbaTeamNJN:before{background-position:-555px -10px}
+#site-nav .nbaTeams ul ul li a.nbaTeamCHA:before{background-position:-74px -10px}
+#site-nav .nbaTeams ul ul li a.nbaTeamCHI:before{background-position:-106px -10px}
+#site-nav .nbaTeams ul ul li a.nbaTeamCLE:before{background-position:-138px -10px}
+#site-nav .nbaTeams ul ul li a.nbaTeamDAL:before{background-position:-170px -10px}
+#site-nav .nbaTeams ul ul li a.nbaTeamDEN:before{background-position:-202px -10px}
+#site-nav .nbaTeams ul ul li a.nbaTeamDET:before{background-position:-234px -10px}
+#site-nav .nbaTeams ul ul li a.nbaTeamGSW:before{background-position:-266px -10px}
+#site-nav .nbaTeams ul ul li a.nbaTeamHOU:before{background-position:-298px -10px}
+#site-nav .nbaTeams ul ul li a.nbaTeamIND:before{background-position:-330px -10px}
+#site-nav .nbaTeams ul ul li a.nbaTeamLAC:before{background-position:-362px -10px}
+#site-nav .nbaTeams ul ul li a.nbaTeamLAL:before{background-position:-394px -10px}
+#site-nav .nbaTeams ul ul li a.nbaTeamMEM:before{background-position:-426px -10px}
+#site-nav .nbaTeams ul ul li a.nbaTeamMIA:before{background-position:-458px -10px}
+#site-nav .nbaTeams ul ul li a.nbaTeamMIL:before{background-position:-490px -10px}
+#site-nav .nbaTeams ul ul li a.nbaTeamMIN:before{background-position:-522px -10px}
+#site-nav .nbaTeams ul ul li a.nbaTeamNOH:before{background-position:-586px -10px}
+#site-nav .nbaTeams ul ul li a.nbaTeamNOP:before{background-position:-586px -10px}
+#site-nav .nbaTeams ul ul li a.nbaTeamNYK:before{background-position:-618px -10px}
+/*#nbaHeader .nbaTeams ul ul li a.nbaTeamOKC:before,*/
+#site-nav .nbaTeams ul ul li a.nbaTeamOKC:before{background-position:-650px -10px}
+#site-nav .nbaTeams ul ul li a.nbaTeamORL:before{background-position:-682px -10px}
+#site-nav .nbaTeams ul ul li a.nbaTeamPHI:before{background-position:-714px -10px}
+#site-nav .nbaTeams ul ul li a.nbaTeamPHX:before{background-position:-746px -10px}
+#site-nav .nbaTeams ul ul li a.nbaTeamPOR:before{background-position:-778px -10px}
+#site-nav .nbaTeams ul ul li a.nbaTeamSAC:before{background-position:-810px -10px}
+#site-nav .nbaTeams ul ul li a.nbaTeamSAS:before{background-position:-842px -10px}
+#site-nav .nbaTeams ul ul li a.nbaTeamTOR:before{background-position:-874px -10px}
+#site-nav .nbaTeams ul ul li a.nbaTeamUTA:before{background-position:-906px -10px}
+#site-nav .nbaTeams ul ul li a.nbaTeamWAS:before{background-position:-938px -10px}
+#site-nav #nbaGlobalNav .nbaTeams .nbaNavSubheading{text-transform:uppercase;padding:0 0 0 25px;}
+#site-nav .nbaTeams .statsNavDropDown .nbaNavSubheading{clear:both; width:400px;padding:4px 16px 0 12px;font-weight:normal;font-size:14px;font-family:arial;line-height:1.6;text-transform:uppercase; position:relative;}
+#site-nav .nav li:hover ul.playerTracking li a {width:175px;}
+#site-nav .nav li:hover > ul.playerTracking {width:175px;}
+
+
+#site-nav .nbaTeams .nbaDivision{display:block;font-weight:bold;font-size:.875em;line-height:2}#nbaHeader #nbaSearch{position:absolute;bottom:0;left:0;width:100%;height:43px;text-align:center;z-index:1}#nbaHeader #nbaSearch form{position:relative;z-index:2;background:url('http://i.cdn.turner.com/nba/tmpl_asset/static/nba-cms3-homepage/1096/elements/header/header-sprite.png') -86px -44px;width:273px;height:24px;margin:8px auto 0 auto;padding:0;text-align:left}#nbaHeader #nbaSearch input{background:0;border:0;font-size:.75em;font-weight:bold;position:absolute;top:0;left:10px;z-index:3;line-height:23px;height:23px;color:#666;width:230px}#nbaHeader #nbaSearch label{position:absolute;font-size:.75em;font-weight:bold;left:10px;top:0;z-index:4;display:block;line-height:24px;height:24px;color:#666}.no-js #nbaHeader #nbaSearch label{display:none}#nbaHeader #nbaSearch .nbaSubmit{background:none transparent;border:0 transparent;position:absolute;top:0;right:0;height:24px;width:30px;display:block;text-indent:100%;white-space:nowrap;overflow:hidden;cursor:pointer;margin:0;padding:0}#nbaHeader #nbaSearch #nbaClockBG{width:1000px;height:43px;position:relative;top:-32px}#nbaHeader #nbaSearch #nbaClockBG .nbaPromoBar{width:250px;float:left;position:relative;left:100px}#nbaHeader #nbaSearch #nbaClock{color:#c33;font:bold 21px Arial;float:left;letter-spacing:0;position:relative;top:10px;word-spacing:-5px;border-right:1px solid #CCC;border-left:1px solid #CCC;padding:0 2px 0 2px;height:25px}#nbaHeader #nbaSearch #clkThrough{width:645px;height:44px;position:absolute;Top:5px;left:7px;z-index:5}#nbaHeader #nbaSearch #nbaClockBG .nbaClockClick{width:350px;height:45px;float:right;cursor:pointer}#nbaHeader #nbaSearch #nbaClockBG .nbaClockClick .nbaCountTo{width:146px;height:27px;float:left;position:relative;top:9px}#nbaHeader #nbaSearch #nbaClockBG .nbaClockClick .nbaCountTo img{float:left}#nbaHeader #nbaSearch #nbaClockBG .nbaClockClick .nbaCountTo p{font:bold 9px arial;text-transform:uppercase;color:#999;width:85px;float:left;margin-left:2px}#nbaHeader #nbaSearch #nbaClockBG .nbaClockClick .nbaCountTo span{color:#fff;font:bold 14px arial}#nbaHeader #nbaSearch #nbaClockBG .nbaClockClick .nbaCountAd{width:88px;height:31px;float:left;position:relative;top:6px;left:7px}#nbaHeader #nbaSearch #cntdwn{position:relative;left:4px;top:3px;font-size:19px;word-spacing:15px}#nbaHeader.nbaThird #nbaGlobalNav>ul>li.nbaGlobal.nbaHover:before{display:none}#nbaHeader.nbaThird #nbaGlobalNav>ul>li>a{font-weight:bold}#nbaHeader.nbaThird #nbaGlobalNav>ul>li>a,#nbaHeader #nbaGlobalNav .nbaNavDropdown a,.nbaLogin a{text-decoration:none}#nbaHeader.nbaThird,#nbaHeader.nbaThird #nbaGlobalNav>ul>li>a,#nbaHeader.nbaThird #nbaSearch label{font-size:12px}#nbaHeader.nbaThird .nbaSocial .nbaLogin a{font-size:11px}#nbaHeader.nbaThird,#nbaHeader.nbaThird #nbaGlobalNav>ul>li>a,#nbaHeader.nbaThird #nbaSearch label{font-size:12px}#nbaHeader.nbaThird .nbaSocial .nbaLogin a{font-size:11px}#nbaAllAccess .nbaWelcomeOffers .nbaAARightCol INPUT{margin-right:5px!important}@media only screen and (min-device-width :768px) and (max-device-width :1024px){#nbaHeader #nbaGlobalNav{padding-left:106px}#nbaHeader #nbaGlobalNav>ul>li:first-child{margin-right:14px}}
+
+.nbaAssist { position: absolute!important; clip: rect(1px 1px 1px 1px); clip: rect(1px,1px,1px,1px); }
+
+#nbaGlobalNav ul {margin:0px; padding:0px;}
+
+#site-nav {position:relative; z-index:100;}
+#site-nav a,
+#site-nav span.nolink {
+    color: #ffffff;
+    font-weight: bold;
+    font-size: .75em;
+    text-decoration:none;
+
+}
+#site-nav a.nolink {font-weight:500 !important; position:relative; display:block;  height:29px;  cursor:pointer;}
+#site-nav .nav {
+    margin-bottom: 0px;
+    list-style-type: none;
+    margin:0;
+    padding-left: 0px; /* 77-89/2 */
+
+
+}
+
+#site-nav .nav li {
+    float: left;
+    margin:0 15px;
+    padding: 0;
+}
+
+#site-nav .nav li:first-child {
+}
+
+#site-nav .nav li li a {
+    /*
+        padding-left: 10px;
+        padding-right: 10px;
+    */
+    font-weight: bold !important;
+    text-decoration:none;
+}
+
+#site-nav .nav li a:hover{
+    color:#f0ab00;
+}
+
+#site-nav .nav li span.nolink:hover {
+    color:#000;
+     text-shadow: none;
+}
+
+#site-nav .nba-stats-nav {
+    /* line-height:32px; */
+    /*	height:32px;   */
+    background: #424242 url(/media/statsnav_bgtile.gif) repeat-x;
+    /*background:#082545;*/
+}
+
+#site-nav .nba-stats-nav  li {
+    /*padding: 0 15px;*/
+    position:relative;
+}
+#site-nav .nba-stats-nav a,
+#site-nav .nba-stats-nav span.nolink {
+    text-shadow : 1px 0px 1px #000000;
+    line-height:29px;
+    position:relative;
+
+}
+
+#site-nav .nba-stats-nav .nolink {
+   font-weight: bold !important;
+}
+#site-nav .nba-stats-nav li:hover span.nolink{color:#000;text-shadow:none;position:relative;z-index:1}
+
+#social-icons li {display:inline; float:left; margin-right:8px;}
+#social-icons li.label {line-height:25px; color:#333; font-size:12px;}
+#social-icons li a {display:block; width:25px; height:25px; text-indent:-9999px;}
+#social-icons li.facebook a {background: url(/media/sectionhdr_btn_facebook.png) no-repeat 0 -25px;}
+#social-icons li.twitter a {background: url(/media/sectionhdr_btn_twitter.png) no-repeat 0 -25px;}
+#social-icons li.google a {background: url(/media/sectionhdr_btn_googleplus.png) no-repeat 0 -25px;}
+#social-icons li.more a {background: url(/media/sectionhdr_btn_more.png) no-repeat 0 -25px;}
+#social-icons li a:hover {background-position: 0 0;}
+
+#nbaHeader .nbaSocial .User {float:none;}
+
+li.statsNavTeams:hover ul ul {position:absolute; left:0px !important; margin:0px !important; padding:0px !important; }
+
+@media screen and (min-width: 763px) and (max-width: 1055px) {
+
+}
+
+@media screen and (min-width: 0px) and (max-width: 759px) {
+
+
+}
+#menu-box-scores form #menu-box-score-run-it{ width: 88px; height:32px; background: transparent url(/media/boxscores_btn_runit.png) no-repeat; border:0px; text-indent:-9999px;}
+#menu-box-scores form  {padding: 5px; padding-left: 25px;}
+
+#site-nav #menu-box-scores-topdiv {height:270px;}
+#site-nav #menu-box-scores form #menu-box-score-run-it{ position: absolute; top: 51px; left: 320px; width: 88px; height:32px; background: transparent url(/media/boxscores_btn_runit.png) no-repeat; border:0px; text-indent:-9999px; display: inline !important; float: right;}
+
+#menu-box-scores form  {width: 420px !important; height: 270px !important; padding: 5px; padding-left: 25px;}
+
+#menu-scores-link {color: #06c;font-weight:bold;font-size: 1.2em;line-height:1.6;padding-left: 15px;}
+
+#menu-scores-link:hover {text-decoration: underline;}
+
+#menu-box-scores {padding: 10px;}
+
+/* Sarah Becker:  Select box emulator for months -- needed to accommodate IE 9 and below in the context of our navigation menu*/
+
+.menu-dropdown-months dl, .menu-dropdown-months dt, .menu-dropdown-months ul, {margin:0px;padding:0px;width: 100px;line-height: 0.75 !important;font-size: 12px;display: inline;
+}
+.menu-dropdown-months a {line-height: 1px;margin: 0;padding: 0;}
+
+.menu-dropdown-months-scroll {height: 100px; width: 122px; overflow-y: scroll; overflow-x: hidden;}
+
+
+#site-nav #menu-box-scores .menu-dropdown-months dd {position:relative; padding: 0 !important; margin: 0 !important;}
+
+.menu-dropdown-months a, .menu-dropdown-months a:visited {color:#816c5b;text-decoration:none;outline:none;}
+
+.menu-dropdown-months a:hover { color:#0088cc;}
+
+.menu-dropdown-months dt a:hover, .menu-dropdown-months dt a:focus { color:#0088cc; border: 1px solid #0088cc;}
+
+.menu-dropdown-months dt a {background:#ffffff url(/media/down_arrow-grey.png) no-repeat scroll right center;display:block;padding-right:20px;border:1px solid #adadaf;width:100px;}
+
+.menu-dropdown-months dt a span {cursor:pointer; display:block; padding:5px;line-height: 0.75;font-size: 14px;font-family: Arial;margin: 0;width: 100px;}
+
+#site-nav #menu-box-scores .menu-dropdown-months dd ul {background:#e4dfcb none repeat scroll 0 0;border:1px solid /*#d4ca9a*/ #adadaf;color:#C5C0B0;display:none;left:0px;padding:0 !important;position:absolute;top:0px;width:120px !important;min-width:100px;list-style:none;}
+
+.menu-dropdown-months span.value {display:none;}
+
+#site-nav #menu-box-scores .menu-dropdown-months dd ul li {margin: 0;width: 120px;text-align: left;text-indent: 0 !important;}
+
+#site-nav #menu-box-scores .menu-dropdown-months dd ul li a { padding:2px; display:block;line-height: 1;font-size: 14px;font-style: normal !important;font-weight: normal !important; font-family: Arial !important;color: #000000;margin: 0;width: 120px;text-decoration: none !important;text-indent: 0px;}
+
+#site-nav #menu-box-scores .menu-dropdown-months dd ul li a:hover {background-color: #0088cc;color: #ffffff;}
+
+#site-nav #menu-box-scores .menu-dropdown-months dd ul li a span {width: 116px;font-weight: normal !important;text-indent: 0;}
+
+#site-nav #menu-box-scores .menu-dropdown-months dd ul li a span:hover { background-color:#0088cc; color: #ffffff}
+
+/* Sarah Becker:  Select box emulator for days -- needed to accommodate IE 9 and below in the context of our navigation menu*/
+
+#menu-dropdown-days-div {position: absolute; top: 41px;left: 162px;width: 36px;line-height: 0.75 !important;}
+
+.menu-dropdown-days-scroll {height: 100px; width: 39px; overflow-y: scroll; overflow-x: hidden;}
+
+.menu-dropdown-days dl, .menu-dropdown-days dt, .menu-dropdown-days ul, {margin:0px;padding:0px;width: 36px !important;height: 20px !important; line-height: 0.75 !important;font-size: 12px;
+}
+.menu-dropdown-days a {line-height: 0.75 !important;margin: 0;padding: 0;}
+
+#site-nav #menu-box-scores .menu-dropdown-days dd {position:relative; padding: 0 !important; margin: 0 !important;}
+
+.menu-dropdown-days a, .menu-dropdown-days a:visited {color:#816c5b;text-decoration:none;outline:none;}
+
+.menu-dropdown-days a:hover { color:#0088cc;}
+
+.menu-dropdown-days dt a:hover, .menu-dropdown-days dt a:focus { color:#0088cc; border: 1px solid #0088cc;}
+
+.menu-dropdown-days dt a {background:#ffffff url(/media/down_arrow-grey.png) no-repeat scroll right center;display:block;padding-right:2px;padding-top:2px;border:1px solid #adadaf;width:36px;height: 18px;}
+
+.menu-dropdown-days dt a span {cursor:pointer; display:block; padding:2px;line-height: 0.75;font-size: 14px;font-family: Arial;margin: 0;width: 36px;height:20px;}
+
+#site-nav #menu-box-scores .menu-dropdown-days dd ul {background:#e4dfcb none repeat scroll 0 0;border:1px solid /*#d4ca9a*/ #adadaf;color:#C5C0B0;display:none;left:0px;padding:0 !important;position:absolute;top:0px;width:36px !important;min-width:36px;list-style:none;}
+
+.menu-dropdown-days span.value {display:none;}
+
+#site-nav #menu-box-scores .menu-dropdown-days dd ul li {margin: 0;width: 36px;text-align: left;text-indent: 0 !important;}
+
+#site-nav #menu-box-scores .menu-dropdown-days dd ul li a { padding:2px; display:block;line-height: 0.75;font-size: 14px;font-style: normal !important;font-weight: normal !important; font-family: Arial !important;color: #000000;margin: 0;width: 36px;text-decoration: none !important;text-indent: 0px;}
+
+#site-nav #menu-box-scores .menu-dropdown-days dd ul li a:hover {background-color: #0088cc;color: #ffffff;}
+
+#site-nav #menu-box-scores .menu-dropdown-days dd ul li a span {width: 36px;font-weight: normal !important;text-indent: 0;}
+
+#site-nav #menu-box-scores .menu-dropdown-days dd ul li a span:hover { background-color:#0088cc; color: #ffffff}
+
+/* Sarah Becker:  Select box emulator for years -- needed to accommodate IE 9 and below in the context of our navigation menu*/
+
+#menu-dropdown-years-div {position: absolute; top: 41px;left: 207px;width: 50px;line-height: 0.75 !important;}
+
+.menu-dropdown-years-scroll {height: 100px; width: 53px; overflow-y: scroll; overflow-x: hidden;}
+
+.menu-dropdown-years dl, .menu-dropdown-years dt, .menu-dropdown-years ul, {margin:0px;padding:0px;width: 50px !important;height: 20px !important; line-height: 0.75 !important;font-size: 12px;
+}
+.menu-dropdown-years a {line-height: 0.75 !important;margin: 0;padding: 0;}
+
+#site-nav #menu-box-scores .menu-dropdown-years dd {position:relative; padding: 0 !important; margin: 0 !important;}
+
+.menu-dropdown-years a, .menu-dropdown-years a:visited {color:#816c5b;text-decoration:none;outline:none;}
+
+.menu-dropdown-years a:hover { color:#0088cc;}
+
+.menu-dropdown-years dt a:hover, .menu-dropdown-years dt a:focus { color:#0088cc; border: 1px solid #0088cc;}
+
+.menu-dropdown-years dt a {background:#ffffff url(/media/down_arrow-grey.png) no-repeat scroll right center;display:block;padding-right:2px;padding-top:2px;border:1px solid #adadaf;width:50px;height: 18px;}
+
+.menu-dropdown-years dt a span {cursor:pointer; display:block; padding:2px;line-height: 0.75;font-size: 14px;font-family: Arial;margin: 0;width: 50px;height:20px;}
+
+#site-nav #menu-box-scores .menu-dropdown-years dd ul {background:#e4dfcb none repeat scroll 0 0;border:1px solid /*#d4ca9a*/ #adadaf;color:#C5C0B0;display:none;left:0px;padding:0 !important;position:absolute;top:0px;width:50px !important;min-width:50px;list-style:none;}
+
+.menu-dropdown-years span.value {display:none;}
+
+#site-nav #menu-box-scores .menu-dropdown-years dd ul li {margin: 0;width: 50px;text-align: left;text-indent: 0 !important;}
+
+#site-nav #menu-box-scores .menu-dropdown-years dd ul li a { padding:2px; display:block;line-height: 0.75;font-size: 14px;font-style: normal !important;font-weight: normal !important; font-family: Arial !important;color: #000000;margin: 0;width: 50px;text-decoration: none !important;text-indent: 0px;}
+
+#site-nav #menu-box-scores .menu-dropdown-years dd ul li a:hover {background-color: #0088cc;color: #ffffff;}
+
+#site-nav #menu-box-scores .menu-dropdown-years dd ul li a span {width: 50px;font-weight: normal !important;text-indent: 0;}
+
+#site-nav #menu-box-scores .menu-dropdown-years dd ul li a span:hover { background-color:#0088cc; color: #ffffff}
+
+#site-nav #menu-box-scores-lk {position: absolute; top: 200px;, left: 30px;}
+
+
+/*** page widening ***/
+#nbaHeader{ background:#006bb5 url('/media/header-bg-1280.png') 0 0 no-repeat!important; 
+            box-shadow:inset 0 -1px 1px #050505,0px 1px 4px #474747;}
+
+#nbaHeader #nbaGlobalNav { width: 1168px; }
+#nbaHeader #nbaGlobalNav>ul>li { margin-right: 35px; }
+#nbaHeader .nbaSocial .Action { margin-left: 3px;}
+#site-nav .nav { margin-left: 45px; }
+
+

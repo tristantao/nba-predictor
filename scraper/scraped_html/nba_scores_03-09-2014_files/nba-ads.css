@@ -1,0 +1,27 @@
+#site-top-adspot {
+	padding: 0px;
+	text-align: center;
+    height:104px;
+    overflow:hidden;
+    background:#252525;
+}
+
+#site-top-adspot img,
+#site-top-adspot .adSpot728x90,
+#site-top-adspot .adspot-728x90 {
+   	-webkit-box-shadow: 1px 1px 6px rgba(51, 51, 51, 0.75);
+    -moz-box-shadow:    1px 1px 6px rgba(51, 51, 51, 0.75);
+    box-shadow:         1px 1px 6px rgba(51, 51, 51, 0.75);
+	margin: 7px auto 0 auto;
+}
+#site-top-adspot .adspot-300x250 {
+    margin: 10px auto;
+   -webkit-box-shadow: 1px 1px 6px rgba(51, 51, 51, 0.75);
+    -moz-box-shadow:    1px 1px 6px rgba(51, 51, 51, 0.75);
+    box-shadow:         1px 1px 6px rgba(51, 51, 51, 0.75);
+}
+
+
+	/* @media screen and (min-width: 763px) and (max-width: 1055px) {
+
+	} */

@@ -1,0 +1,222 @@
+a {text-decoration:none;}
+ul,li {padding:0px; margin:0px; list-style:none;}
+img {border:0px;}
+.text-shadow {text-shadow: 1px 0 1px #d5d5d5;}
+.section-header { font-family: arial; color: #FAFAFA; font-size: 18px; font-weight: bold; height: 40px; line-height: 40px; background: #000 url(/media/frag_hdr_bgtile.jpg) repeat-x; padding-left: 18px; text-shadow: 0px 1px 1px black; margin: 0px; }
+.section-header .button {display:block; width:129px; height:28px; line-height:28px; float:right; margin:5px 20px 0 0; background: url(/media/inside_nav_singlebtn.png) no-repeat; text-align:center; color:#eee; font-size:12px; font-weight:bold; text-shadow: 1px 0 1px #000; text-decoration:none;}
+.grey {background:#e9e9e9;}
+.clearfix {clear:both;}
+.show {display:block;}
+.hide {display:none;}
+
+
+#site-branding {height:90px; }
+/*#site-section { background: url(/media/sectionhdr_bg_general_sap.png) no-repeat top right; }*/
+#site-section h1 { padding-left: 20px; margin:9px 0; font-size: 26px; font-weight: normal; }
+#site-section #social-icons {margin-left:20px;}
+
+
+.page-branding {float:left;}
+.page-branding h1 { clear:right; font-size:26px; font-weight:normal; margin:9px 0;}
+.page-branding .breadcrumbs { font-size:14px; line-height:1em; padding-left: 20px;}
+.page-branding .breadcrumbs a {color:#06c;}
+.page-branding .breadcrumbs a.page {color:#434343;}
+.page-branding #social-icons ul {margin:5px 0 0 0px; padding:0px;}
+
+
+#scores-pages {position:relative; background:#f3f3f3;}
+#standings-section {position:relative; background:#f3f3f3; margin:1em 0 1em 0; min-height:280px;}
+
+.standings-header{width:95%; height: 42px; line-height: 42px; background: url(/media/inside_titlebar_bgtile.gif) repeat-x; margin:20px 8px 0 8px; font-size: 14px; text-indent: 13px; font-weight:bold; text-shadow: 1px 0 1px #D5D5D5;}
+#standings-section .standings-result:first-child .standings-header {margin-left:20px;}
+
+#standings-section table {width:95%; border-spacing:0px; font-size:11px; font-weight:bold; margin:0 20px 20px 8px; border:1px solid #ccc;}
+#standings-section .standings-result:first-child table{margin:0 8px 8px 20px;}
+#standings-section table tr:nth-child(even) {background: #efeff0;}
+#standings-section table tr:nth-child(odd) {background: #fff;}
+#standings-section table th {height:32px; line-height:32px; padding:0 3px; background:#d7d7d7 url(/media/standings_table_hdr_bgtile.gif) repeat-x center right;}
+#standings-section table th.team {text-align: left; text-indent: 10px;}
+#standings-section table th.multi-line {line-height:12px;}
+#standings-section table td {text-align:center; height:30px; line-height:30px; border-right:1px solid #cdcdcd;}
+#standings-section table td:first-child {text-align:left; text-indent:10px;}
+#standings-section table td:last-child {border-right:0px;}
+#standings-section table .player {width:125px; text-align:left; text-indent:3px;}
+#standings-section table a{color:#0066d1; text-decoration:none;}
+
+#scoreboard-date-nav .prev,
+#scoreboard-date-nav .next {width: 7px; height:12px; background: url(/media/inside_nav_arrowleft_darkbg.png) no-repeat; text-indent:-9999px; float:left; margin:15px 10px 0 10px; cursor:pointer;}
+#scoreboard-date-nav .next {background: url(/media/inside_nav_arrowright_darkbg.png) no-repeat;}
+#scoreboard-date-nav .current { float:left; color:#ffffff; line-height:18px; font-size:14px; margin-top:0px; width:210px; text-align:center;} 
+#scoreboard-date-nav #browse-date { background: transparent; color:#ffffff; border:none; font-size:14px; margin-top:0px; margin-right:15px; width:130px;}
+
+#scoreboards { min-height:280px; margin-top:8px; }
+
+
+.section-header {position:relative;}
+.scores-nav-placeholder {height:40px;}
+.dropdown-nav li {display:inline; float:left; margin:6px 22px 0 0;}
+.dropdown-nav li a {display:block; width:130px; height:28px; line-height:28px; text-align:center; background: url(/media/inside_nav_singlebtn.png) no-repeat; font-size:12px; color:#fff;}
+
+
+
+.score {width:325px; height:250px; background:#fff; float:left; margin:5px 5px 5px 10px; border:1px solid #cbcbcb; font-size: 11px;}
+.score h2 { height:25px; line-height:25px; font-size:12px; background: #06d; color:#fff; text-indent:8px; margin:0px; text-transform:uppercase;}
+.score.final h2 { background:#666;}
+.score.live h2{background: #ec003e;}
+.score .tab-nav {height: 32px; margin:15px 0 10px 8px;}
+.score .tab-nav li {display:inline; float:left;}
+.score .tab-nav li a {display:block; width:155px; height:32px; line-height:32px; font-size:11px; background: url(/media/inside_nav_155right_lightbg.png) no-repeat 0 -32px; text-align:center; font-weight:bold; text-transform:uppercase;}
+.score .tab-nav li:first-child a {background: url(/media/inside_nav_155left_lightbg.png) no-repeat 0 -32px;}
+.score .tab-nav li a.current {color:#fff; background-position: 0 0;}
+
+.score table {}
+.score table th,
+.score table td {padding:0 5px; line-height:20px;}
+.score table th {background: #e3e3e3;}
+.score table tr:nth-child(even) {background: #efeff0;}
+.score table td:first-child {width:100px; line-height:10px;}
+.score table .prd {text-align:center;}
+.score table .logo {float:left; text-indent:-9999px; margin-right:10px;}
+.score a {color:#06d;}
+.score .panel table.game-stats td:first-child { width:35px; }
+
+/*
+.series {margin:20px 8px 8px 8px;}
+
+.links,
+.gamebook {margin:0 8px 0px 8px;}
+*/
+
+
+
+
+h1.nogames { text-align: center; margin: 20px auto; color:#06c; font-size: 48px; }
+
+
+.score {width:325px; height:250px; background:#fff; float:left; margin:10px 49px; border:1px solid #cbcbcb; font-size: 11px; overflow:hidden;}
+
+.score h2 { height:25px; line-height:25px; font-size:12px; background: #06d; color:#fff; text-indent:8px; margin:0px; text-transform:uppercase;}
+
+
+.score .tab-nav {height: 32px; margin:12px 0 10px 8px;}
+.score .tab-nav li {display:inline; float:left;}
+.score .tab-nav li a {display:block; width:155px; height:32px; line-height:32px; font-size:11px; background: url(/media/inside_nav_155right_lightbg.png) no-repeat 0 -32px; text-align:center; font-weight:bold; text-transform:uppercase;}
+.score .tab-nav li:first-child a {background: url(/media/inside_nav_155left_lightbg.png) no-repeat 0 -32px;}
+.score .tab-nav li a.current {color:#fff; background-position: 0 0;}
+
+.score .panel table { font-size:11px; width:315px; margin-left:5px;}
+.score .panel table th,
+.score .panel table th {background: #e3e3e3;}
+.score .panel table td {padding:2px 6px; line-height:20px; text-align:right;}
+.score .panel table td.prd {text-align:center;}
+.score .panel table td:first-child {width:90px; line-height:10px; text-align:left;}
+.score .panel table .logo {float:left; text-indent:-9999px; margin-right:10px;}
+.score a {color:#06d;}
+.game-details {margin:10px 8px 8px 8px;}
+/*
+.series {margin:10px 8px 8px 8px;}
+.post-links {margin:10px 8px 8px 8px;}
+.links, .gamebook {margin:10px 8px 8px 8px;}
+*/
+
+.score .stat-leaders table { font-size:11px; width:315px; border:0; border-collapse:collapse; margin-top:5px; }
+.score .stat-leaders table th { padding:2px 6px; width:156px; line-height:20px; }
+.score .stat-leaders table td { padding:2px 6px; width:156px; line-height:16px; }
+
+
+.score .content table { border-collapse: collapse; }
+.score .content td { border-right:1px solid #ccc; }
+.score .content td:last-child { border-right:none;}
+
+.score .scoreboard { border-collapse: collapse; }
+.score .scoreboard .prd.inactive{ display: none; }
+
+.score[gamestatus="1"] h2 { background: #3a69b0; } 
+.score[gamestatus="1"] .tab-nav { visibility:hidden; }
+.score[gamestatus="1"] .game-details .gamebook { display:none; } 
+.score[gamestatus="1"] .game-details .post-links { display:none; } 
+.score[gamestatus="1"] .game-details .stat-leaders { display:none; } 
+
+.score[gamestatus="2"] h2 { background: #e81c44; }
+.score[gamestatus="2"] .game-details .pregame { display:none; }
+.score[gamestatus="2"] .game-details .gamebook { display:none; }
+.score[gamestatus="2"] .game-details .series { display:none; }
+.score[gamestatus="2"] .game-details .lastmeeting { display:block; }
+
+.score[gamestatus="3"] h2 { background: #666666; }
+.score[gamestatus="3"] .game-details .pregame { display:none; }
+.score[gamestatus="3"] .stat-leaders { display:none; } 
+
+
+#ui-datepicker-div { z-index: 102 !important;font-family: arial !important;  }
+#ui-datepicker-div .ui-datepicker-header.ui-widget-header { background:#555; border:none; font-size:12px; }
+#ui-datepicker-div .ui-datepicker-title .ui-widget select { font-family:arial; }
+#ui-datepicker-div .ui-widget { font-size: 12px !important; }
+.ui-datepicker .ui-datepicker-calendar { border-collapse: collapse; font-family: arial; }
+.ui-datepicker .ui-datepicker-calendar th { padding:.3em; }
+.ui-datepicker .ui-datepicker-calendar tr td { padding:0px; border:1px solid #bbb;}
+.ui-datepicker .ui-datepicker-calendar tr td a.ui-state-default, #ui-datepicker-calendar table tr td a.ui-widget-content, #ui-datepicker-calendar table tr td a.ui-state-default{ border:none; padding:3px;}
+
+
+
+
+
+/*
+
+@media screen and (min-width: 763px) and (max-width: 1055px) {
+    .page-branding {width:100%;}
+    #scores-scroll .scrollable {width:763px; margin-left:0px;}
+    #scores-scroll .scrollable .items > div {width:763px;}
+
+}
+*/
+
+@media screen and (min-width: 0px) and (max-width: 759px) {
+    /*
+    #site-top-adspot {display:none;}
+    #page-scores {padding-top:60px;}
+    #site-section {background: url(/media/sectionhdr_bg_mobile_sap.png) no-repeat top right !important; }
+    #site-branding {height:50px;}
+    #sponsor-branding {display:none;}
+    .breadcrumbs {display:none;}
+    #social-icons {display:none;}
+     */
+     #site-branding {background-position: bottom right; height:50px;}
+    #site-section {height:50px;}
+    #site-section h1 {font-size:16px; font-weight:bold; margin:5px 0;}
+    #site-section .sap-sponser {display:none;}
+    #site-section-title .breadcrumb {font-size:12px;}
+    #site-section #social-icons {margin-left:0px;}
+
+    h1.nogames {font-size:20px;}
+
+    /*.dropdown-nav li {margin:6px 6px 0 0;}*/
+    #page-scores .section-header:first-child {padding-left:0px;}
+
+    #scoreboard-date-nav .current { width:250px;}
+    #scoreboard-date-nav #browse-date {font-size: 20px; margin: 0px 15px 0 0; width: 170px; font-weight: bold; float: left; line-height: 40px; }
+    .ui-datepicker-trigger {width:34px; height:34px; background: url(/media/mobile_calendar.png) no-repeat; border:0px; margin-top:3px; cursor:pointer;}
+    .ui-datepicker-trigger img {display:none;}
+
+    #scoreboards {width:320px;}
+
+    #scores-scroll .scrollable {width:320px; margin-left:0px;}
+    #scores-scroll .scrollable .items > div {width:320px;}
+    .score {width:295px;  margin-left: 11px;}
+
+
+    .score[gamestatus="1"] {height:180px;}
+    .score[gamestatus="1"] .tab-nav {display:none;}
+    .score .tab-nav li a {width:135px; background-position:bottom right;}
+    .score .tab-nav li a.current {background-position:top right;}
+    .score .tab-nav li:first-child a.current {background-position:top left;}
+    .score .panel table {width:300px; margin-left:0px;}
+    .score table th {padding: 0 4px;}
+    .score .panel table td {padding: 2px 4px; text-align: center;}
+    .series {margin-top:5px;}
+    #standings-section .standings-result:first-child table,
+    #standings-section table {margin-left:8px;}
+    .standings-header,
+    #standings-section .standings-result:first-child .standings-header {margin-left:8px;}
+
+}

@@ -1,0 +1,1 @@
+YUI.Env.JSONP.yui_3_14_0_1_1397106439004_2592([{"channel":"/meta/subscribe", "timestamp":"2014-04-10T05:07:26.170740", "successful":true, "clientId":"bf1onepush14.20654161397106446136438490326726.IjDB45Y3aLvCGN8WweZ3Ekq9NO6vhMwwXScMFuC2C7ho_9gOXOSoo3wX", "subscription":"/sports/games/nba.g.2014040912", "id":"2", "ext":{ "Comet-auth-token":""}, "advice":{"interval":1000}}])

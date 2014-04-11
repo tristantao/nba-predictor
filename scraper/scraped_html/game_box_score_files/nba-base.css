@@ -1,0 +1,199 @@
+/*** DEFAULTS ***/
+
+body { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 16px; line-height:1.3em !important; margin:0; padding:0; background: #efefef; } /***  background: #999999 url(/media/page_bgtile.jpg) 0 0 repeat-x; ***/
+a { color : #06c; text-decoration: none; }
+
+
+/*** COLUMNS ***/
+
+.col { border:0px solid rgba(0,0,0,0); float:left; -webkit-box-sizing:border-box; -moz-box-sizing:border-box; box-sizing:border-box; -moz-background-clip:padding-box !important; -webkit-background-clip:padding-box !important; background-clip:padding-box !important; }
+.container { margin: 0 auto;  width: 1280px; padding: 0; position: relative; display: block; }
+.row { width: 100%; margin-left: 0;  *zoom: 1; }
+.row:before, .row:after { display: table; line-height: 0; content: ""; }
+.row:after { clear: both; }
+.span1, .span2, .span3, .span4, .span5, .span6 { float:left; }
+
+.span1 { width:16.6666666667%; }
+.span2 { width:33.3333333333%; }
+.span3 { width:50.0%; }
+.span4 { width:66.6666666667%; }
+.span5 { width:83.3333333333%; }
+.span6 { width:100%; }
+		
+
+/*** CLEAR FIX ***/
+
+.clearfix:after { content: "."; display: block; clear: both; visibility: hidden; line-height: 0; height: 0; }
+.clearfix { display: inline-block; }
+html[xmlns] .clearfix { display: block; }
+* html .clearfix { height: 1%; }
+
+
+/*** COPYRIGHT ***/
+
+.copyright_copy {padding-top:10px;}
+.copyright_copy a {color:#fff;}
+
+/*** eyecandy ***/
+
+/*.shadow { -webkit-box-shadow:0 0px 3px rgba(0, 0, 0, 0.6);  -moz-box-shadow:0 0px 3px rgba(0, 0, 0, 0.6);  box-shadow:0 0px 3px rgba(0, 0, 0, 0.6); }
+*/
+	
+	
+	/*** screen ***/
+/*	
+	@media screen and (min-width: 1131px) {
+
+		.show-desktop { display: block; }
+		.hide-desktop { display: none; }
+		
+
+		.container {
+			width: 1131px;
+			padding: 0px;
+		}
+
+        .span1 { width:16.6666666667%; }
+        .span2 { width:33.3333333333%; }
+        .span3 { width:50.0%; }
+        .span4 { width:66.6666666667%; }
+        .span5 { width:83.3333333333%; }
+        .span6 { width:100%; }	
+	
+	}
+*/
+	
+
+
+
+
+	/*** MOBILE ***/
+	@media screen and (min-width: 0px) and (max-width: 759px) {
+	
+		.show-mobile { display: block; }
+		.hide-mobile { display: none; }
+
+		.container {
+			width: 320px;
+			padding: 0px;
+		}
+		
+        .span1 { width:100%; }
+        .span2 { width:100%; }
+        .span3 { width:100%; }
+        .span4 { width:100%; }
+        .span5 { width:100%; }
+        .span6 { width:100%; }
+
+	}
+
+.filter-button {
+	/*
+    display: inline-block;
+    text-align: center;
+    border-width: 1px;
+    border-style: solid;
+    text-transform: uppercase;
+    text-decoration: none;
+    line-height: 1.1;
+    font-weight: normal;
+    font-family: sans-serif;
+    color: #FFFFFF;
+    font-size: 12px;
+    background-color: #0066dd;
+    background-image: -webkit-linear-gradient(top, #0068e2 0%, #207be6 48%, #0066dd 49%, #0066dd 82%, #0073f9 100%);
+    background-image: -moz-linear-gradient(top, #0068e2 0%, #207be6 48%, #0066dd 49%, #0066dd 82%, #0073f9 100%);
+    background-image: -o-linear-gradient(top, #0068e2 0%, #207be6 48%, #0066dd 49%, #0066dd 82%, #0073f9 100%);
+    background-image: linear-gradient(top, #0068e2 0%, #207be6 48%, #0066dd 49%, #0066dd 82%, #0073f9 100%);
+    border-color: hsl(212, 40%, 43%);
+    -webkit-box-shadow: inset 0 0 1px 1px #2a8dff, 0 0 1px 3px rgba(0, 0, 0, 0.15);
+    -moz-box-shadow: inset 0 0 1px 1px #2a8dff, 0 0 1px 3px rgba(0, 0, 0, 0.15);
+    box-shadow: inset 0 0 1px 1px #2a8dff, 0 0 1px 3px rgba(0, 0, 0, 0.15);
+    -webkit-text-shadow: 1px 1px 1px #003777;
+    -moz-text-shadow: 1px 1px 1px #003777;
+    -o-text-shadow: 1px 1px 1px #003777;
+    text-shadow: 1px 1px 1px #003777;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+    padding: 4.800000000000001px 12px 4.800000000000001px 12px;
+	*/
+	
+	
+	background: transparent none;
+	border: 0px;
+	color: #06d;
+	font-size: 12px;
+	font-weight: bold;
+	text-shadow: 1px 0 1px #d5d5d5;
+	cursor: pointer;
+}
+
+/*
+.filter-button strong {
+    letter-spacing: 1px;
+    font-size: 12px;
+}
+*/
+.filter-button:hover {
+/*
+    color: #FFFFFF;
+    background-color: #006dec;
+    background-image: -webkit-linear-gradient(top, #006ff1 0%, #2d83e8 48%, #006dec 49%, #006dec 82%, #097bff 100%);
+    background-image: -moz-linear-gradient(top, #006ff1 0%, #2d83e8 48%, #006dec 49%, #006dec 82%, #097bff 100%);
+    background-image: -o-linear-gradient(top, #006ff1 0%, #2d83e8 48%, #006dec 49%, #006dec 82%, #097bff 100%);
+    background-image: linear-gradient(top, #006ff1 0%, #2d83e8 48%, #006dec 49%, #006dec 82%, #097bff 100%);
+    border-color: hsl(212, 40%, 46%);
+    -webkit-box-shadow: inset 0 0 1px 1px #3995ff, 0 0 1px 3px rgba(0, 0, 0, 0.15);
+    -moz-box-shadow: inset 0 0 1px 1px #3995ff, 0 0 1px 3px rgba(0, 0, 0, 0.15);
+    box-shadow: inset 0 0 1px 1px #3995ff, 0 0 1px 3px rgba(0, 0, 0, 0.15);
+    -webkit-text-shadow: 1px 1px 1px #003e86;
+    -moz-text-shadow: 1px 1px 1px #003e86;
+    -o-text-shadow: 1px 1px 1px #003e86;
+    text-shadow: 1px 1px 1px #003e86;
+	*/
+	background: transparent none;
+	border: 0px;
+	color: #06d;
+	font-size: 12px;
+	font-weight: bold;
+	text-shadow: 1px 0 1px #d5d5d5;
+	cursor: pointer;
+}
+
+.filter-button:active {
+/*
+    color: #FFFFFF;
+    background-color: #005fce;
+    background-image: -webkit-linear-gradient(top, #005ac4 0%, #0066dd 100%);
+    background-image: -moz-linear-gradient(top, #005ac4 0%, #0066dd 100%);
+    background-image: -o-linear-gradient(top, #005ac4 0%, #0066dd 100%);
+    background-image: linear-gradient(top, #005ac4 0%, #0066dd 100%);
+    padding: 5.800000000000001px 12px 3.8000000000000007px 12px;
+	*/
+	background: transparent none;
+	border: 0px;
+	color: #06d;
+	font-size: 12px;
+	font-weight: bold;
+	text-shadow: 1px 0 1px #d5d5d5;
+	cursor: pointer;
+}
+
+/*** Slider Container ***/
+.dojoSliderContainer{ width: auto; height:auto; padding: 2px 30px 2px 10px;  background: rgb(158,158,158); display:none;}
+
+/* SAP Sponser common CSS acroos the site */
+#site-section .sap-sponser{
+	text-indent: -9999px;
+	height: 60px;
+	padding: 20px 90px 10px 270px;
+	font-size: 22px;
+	font-weight: bold;
+	line-height: 26px;	
+}
+
+	/*** MOBILE ***/
+	@media screen and (min-width: 0px) and (max-width: 759px) {
+        #site-section .sap-sponser {position: absolute; top: 40px; right: 0px; padding: 0px; height: 50px; width: 100px; }
+ 	}

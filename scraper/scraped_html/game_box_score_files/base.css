@@ -1,0 +1,170 @@
+#filters { background: #ffffff; }
+#filter-selector .labeltext { font-style:normal; font-weight:bold; color:#000000; }
+
+#run-it{
+	text-indent:-10000px;
+	display: block;
+	width:80px;
+	height:24px;
+	border:none;
+	background: url(/media/filter-runit.png) no-repeat;
+	background-position: 0 0;
+	box-shadow: 0px 0px 5px rgba(0,0,0,.3);
+	cursor: pointer;
+	margin-top:6px;
+	margin-right: 10px;
+	float: right;	
+	margin-bottom: 5px;
+}
+
+#run-it[disabled="disabled"] {
+	background-position: 0 -24px;
+	cursor: default;
+}
+
+div.droplist { border:none; }
+div.droplist:hover { /*box-shadow:0 0 4px #000000;*/ z-index:40;}
+div.droplist > .holder { min-width:300px; }
+div.droplist > a.label { border:none; }
+
+div.datefilter { position: relative; float:left; font-size:13px;; }
+div.datefilter:hover { /*box-shadow:0 0 4px #000000;*/ z-index:40;}
+div.datefilter a { display:block; height:2em; line-height:2em;  background:#ffffff; padding: 5px 0px;}
+div.datefilter a span.label { font-style: italic; font-weight:normal; color: #777; padding-right:10px; padding-left:5px;}
+div.datefilter a input { width: 50%; padding:2px;}
+div.datefilter a.filter-close { margin-top: 4px; float: left; background: url(/media/filter-close.png) no-repeat 50% 50%; height:18px; width:18px; text-indent:-20000px; overflow:hidden; }
+
+div.customfilter {  position: relative; float:left; font-size:13px; height:2em; line-height:2em;  padding:5px 0px;}
+div.customfilter:hover { /*box-shadow:0 0 4px #000000;*/ z-index:40;}
+div.customfilter input.filter-value { width: 5em; }
+div.customfilter a.filter-close { margin-top: 4px; float: left; background: url(/media/filter-close.png) no-repeat 50% 50%; height:18px; width:18px; text-indent:-20000px; overflow:hidden; }
+
+
+@media screen and (min-width: 759px) {
+	/* Homepage Droplist specific CSS */
+	div.droplist.homepage { background: url(/media/module_buttonset_light.png) 0px -28px repeat-x; 
+			width: 120px; float: right; border: 1px solid #AAA; border-radius: 5px; }
+	div.droplist.homepage > a.label { background-color: transparent; font-size: 14px; font-weight: 400;			
+				height: 16px; line-height: 1.2em; color: #000000; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+	div.droplist.homepage > .holder { min-width: 130px; overflow-y: hidden; }
+
+	/* Leaders page Droplist specific CSS */
+	div.droplist.leaderspage { background: transparent; margin-left: 20px; margin-top: 5px; width: 170px; margin-left: 0px;}
+	div.droplist.leaderspage > a.label { background-color: transparent; font-size: 14px; font-weight: bold;			
+				height: 16px; line-height: 1.2em; color: #000000; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+	div.droplist.leaderspage > .holder { min-width: 130px; text-shadow: none; width: 300px;}
+	div.droplist.leaderspage.noscroll > .holder { overflow-y: hidden; width: 150px;}
+
+	div.droplist.leaderspage input.search { padding-bottom: 5px;} 
+}
+
+
+/*Require filter CSS Desktop*/
+#require-filter-section .section-header { background: #979797 url(/media/inside_subnav_bgtile.gif) repeat-x; color: #000; text-shadow: 0px 1px 1px #d5d5d5; font-size: 14px;}
+#require-filter-section .section-header { position: relative; }
+#require-filter-section { font-size:14px; font-weight:bold; min-height:40px; height: auto;}
+#require-filter-section .droplist { background:none; font-size:14px; font-weight:bold; border:none;}
+#require-filter-section .droplist a.label { background-color:transparent; font-size:14px; font-weight:bold; border:none; box-shadow:none;}
+#require-filter-section .droplist:hover { box-shadow:none;}
+#require-filter-section { 
+	background: #eaeaea; /* Old browsers */
+	background: -moz-linear-gradient(top, #eaeaea 0%, #c4c4c4 99%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#eaeaea), color-stop(99%,#c4c4c4)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #eaeaea 0%,#c4c4c4 99%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #eaeaea 0%,#c4c4c4 99%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, #eaeaea 0%,#c4c4c4 99%); /* IE10+ */
+	background: linear-gradient(to bottom, #eaeaea 0%,#c4c4c4 99%); /* W3C */
+}
+#require-filter-section > div.droplist > a.label { padding : 5px 5px 5px 15px; }
+
+#filters  .customfilter { width: 22%;}
+
+/*Custom filter CSS Desktop*/
+#filters { min-height: 40px; height: auto; }
+
+#filters.playerTracking { border-bottom: 1px Solid #c6c6c6; }
+#filters.playerTracking  .customfilter { width: 33%;}
+#filters.playerTracking  .customfilter select.filter-column{ max-width: 170px;}
+
+
+@media screen and (min-width: 0px) and (max-width: 759px) {
+	/*Require filter CSS Desktop*/
+	#require-filter-section .droplist { border-bottom: 1px solid #aaa;}
+
+	/*Custom filter CSS Desktop*/
+	#filters .droplist { border-bottom: 1px solid #aaa; }
+	#filters  .datefilter,
+	#filters  .customfilter { border-bottom: 1px solid #aaa;}
+	#filters  .customfilter { width: 100%;}
+	#filter-selector.droplist { border-bottom: none; }
+
+	#filters.playerTracking  .customfilter { width: 100%;}
+}
+
+/* UI for calendar*/
+#ui-datepicker-div { z-index: 102 !important;font-family: arial !important;  }
+#ui-datepicker-div .ui-datepicker-header.ui-widget-header { background:#555; border:none; font-size:12px; }
+#ui-datepicker-div .ui-datepicker-title .ui-widget select { font-family:arial; }
+#ui-datepicker-div .ui-widget { font-size: 12px !important; }
+.ui-datepicker .ui-datepicker-calendar { border-collapse: collapse; font-family: arial; }
+.ui-datepicker .ui-datepicker-calendar th { padding:.3em; }
+.ui-datepicker .ui-datepicker-calendar tr td { padding:0px; border:1px solid #bbb;}
+.ui-datepicker .ui-datepicker-calendar tr td a.ui-state-default, #ui-datepicker-calendar table tr td a.ui-widget-content, #ui-datepicker-calendar table tr td a.ui-state-default{ border:none; padding:3px;}
+
+/* UI for Dialog*/
+.ui-dialog-titlebar.ui-widget-header { border: 1px solid #ffffff; background: #ffffff; color: #222; font-weight: bold; font-size: 14px; }
+.ui-dialog .ui-dialog-content{ padding: 0; overflow: hidden;}
+.ui-dialog-content .nav_main{ margin-left: 20px; height: 30px; }
+.ui-dialog-content .nav_main li, .ui-dialog .nav_main li a{ width: 85px; }
+.ui-dialog-content .nav_main li:focus, .ui-dialog .nav_main li a:focus{ outline: 0; }
+.ui-dialog .ui-dialog-titlebar-close { position: absolute; top: 15px; }
+.ui-dialog .ui-dialog-titlebar-close span{ background-image: url(/media/close_icon.png); background-position: 0 0;}
+
+.ui-dialog  .ui-dialog-titlebar .ui-dialog-title .playerName,
+.ui-dialog  .ui-dialog-titlebar .ui-dialog-title .teamName { color: #06c; font-size: 16px; }
+.ui-dialog  .ui-dialog-titlebar .ui-dialog-title .teamNameSmall { color: #696969; font-size: 11px; display: inline-block; margin-left: 10px; }
+.ui-dialog  .ui-dialog-titlebar .ui-dialog-title .titleString { display:block; font-size: 13px; }
+.ui-dialog #social-icons { padding: 10px 0 0; }
+.ui-dialog #social-icons input { width: 200px; }
+
+.ui-dialog { border: 2px solid #696969 !important; border-radius: 0px !important; border-bottom: 5px solid #06C !important; }
+.ui-dialog .ui-dialog-title { display: block; float: none;}
+.ui-dialog div#shotchartVideodialog > div#lightBoxContent { margin-top: 0px;}
+
+/*Shotchart Video tooltip Arrow connector*/
+.shotchart-video-menu-tooltip-arrow { 
+	background: url("../../media/tooltip_arrow_up.png") no-repeat scroll left top rgba(0, 0, 0, 0);
+    height: 10px;
+    width: 16px;
+    z-index: 999;
+}
+.shotchartOrVideoMenu{ 	
+	display:block; 	
+	border: 1px solid #6b6b6b; 
+	font-family: verdana, sans-serif;
+	min-width: 80px;
+	max-width: 210px;	
+	background: #fff;
+	font-size: 12px; 
+	line-height: 1.5em; 
+	padding: 10px; 
+	-webkit-box-shadow: 1px 1px 5px #333;
+	-moz-box-shadow: 1px 1px 5px #333;
+	-o-box-shadow: 1px 1px 5px #333;
+	box-shadow: 1px 1px 5px #333;
+	-moz-border-radius: 0;
+	-webkit-border-radius: 0;
+	-khtml-border-radius: 0;
+	border-radius: 0;
+	z-index: 999;
+}
+.shotchartOrVideoMenu .statShotchartLightBoxLink { display:block; text-align: center;}
+.shotchartOrVideoMenu a { text-decoration: none;}
+.shotchartOrVideoMenu .mainMenu { margin-bottom: 5px; text-align: center;} 
+.shotchartOrVideoMenu .menuInfo { margin-top: 5px; text-align: center;}
+.shotchartOrVideoMenu .subMenu { display:none; }
+.shotchartOrVideoMenu .mainMenu a { font-weight: bold; color: #06c; display: inline-block; margin: 5px;}
+.shotchartOrVideoMenu .mainMenu .menuSeperator {color: #dcdcdc;}
+.shotchartOrVideoMenu .subMenu a { color: #000;}
+.shotchartOrVideoMenu .subMenu a:hover { background-color:#dcdcdc;}
+.shotchartOrVideoMenu .menuInfo .measure { font-weight: bold; }

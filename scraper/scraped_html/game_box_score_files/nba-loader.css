@@ -1,0 +1,20 @@
+.loader { display: none; text-align: center; }
+.loading .loader{ display: block; }
+.loader span { display: inline-block; vertical-align: middle; width: 10px; height: 10px; margin: 50px auto; background: #F28705; border-radius: 50px; }
+
+.loader span { -webkit-animation: loader 0.8s infinite alternate; -moz-animation: loader 0.4s infinite alternate; }
+.loader span:nth-of-type(1) { -webkit-animation-delay: 0.0s; -moz-animation-delay: 0.0s; }
+.loader span:nth-of-type(2) { -webkit-animation-delay: 0.2s; -moz-animation-delay: 0.2s; }
+.loader span:nth-of-type(3) { -webkit-animation-delay: 0.4s; -moz-animation-delay: 0.4s; }
+.loader span:nth-of-type(4) { -webkit-animation-delay: 0.6s; -moz-animation-delay: 0.6s; }
+.loader span:nth-of-type(5) { -webkit-animation-delay: 0.8s; -moz-animation-delay: 0.8s; }
+
+@-webkit-keyframes loader {
+  0% {  opacity: 0.9; }
+  100% { opacity: 0.1;}
+}
+
+@-moz-keyframes loader {
+  0% { opacity: 0.9; }
+  100% { opacity: 0.1; }
+}

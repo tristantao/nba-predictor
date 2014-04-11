@@ -1,0 +1,21 @@
+div.droplist { position: relative;float:left;font-size:13px; display:none; background:#ffffff;}
+div.droplist > a.label { border:1px solid #ddd; background: #ffffff url(/media/ui-dropdown-arrow-right.png) no-repeat 10px 50%; /*background: url(/media/droplist-ui-down.png) no-repeat 5px 50%;*/ text-decoration:none; display:block; height:2em; line-height:2em; border-bottom: 1px solid #ddd; color: #666; text-shadow: 0 1px 1px #ffffff; padding : 5px 5px 5px 25px; margin:0; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; cursor:pointer; font-weight:bold;   }
+div.droplist.opened > a.label { background: #ffffff url(/media/ui-dropdown-arrow-down.png) no-repeat 10px 50%; }
+div.droplist > a.label > span.labeltext { font-style: italic; font-weight:normal; color: #777; padding-right:10px; }
+div.droplist > a.remove { float:left; margin-top:9px; background: url(/media/filter-close.png) no-repeat 50% 50%; height:18px; width:18px; padding: 0px; border:none; box-shadow: none;}
+div.droplist > .holder { width:100%; min-width:32; position:absolute; overflow:hidden; overflow-y:scroll; max-height:250px; z-index:50; box-shadow: 0 4px 4px rgba(0,0,0,.3); display:none; }
+div.droplist input.search { border:none; font-size:13px; line-height:2em; height:30px; padding:0em 1em; width:100%; border-bottom: 1px solid #ddd; background: #08c url(/media/ui-dropdown-search.png) no-repeat;}
+div.droplist > .holder > ul { width:100%; list-style-type: none; padding: 0; margin:0;  }
+div.droplist > .holder > ul > li { padding:0;  margin:0; }
+div.droplist > .holder > ul > li > a { text-decoration:none; display:block; line-height:1.5em; border-bottom: 1px solid #ddd; color: #777; margin:0; padding : 5px 5px 5px 20px; background:#f2f2f2; }
+div.droplist > .holder > ul > li > a:hover { background: #666; color: #ffffff; }
+div.droplist > .holder > ul > li > a.filtered { display: none; }
+div.droplist > .holder > ul > li > a.selected { background: #3af; color: #fff; }
+div.droplist > .holder > ul > li > a.selected:hover { cursor:normal; }
+div.droplist > .holder > ul > li:last-child > a { border-bottom: none; }
+
+div.droplist.multi > .holder > ul li a { background:#ffffff url(/media/droplist-ui-uncheck.png) no-repeat 10px 50%; width: 300px; padding-left:40px;  display: block; text-decoration: none; color:#525259; border-bottom:1px solid #fff;}
+div.droplist.multi > .holder > ul > li > a.filtered { display: none; }
+div.droplist.multi > .holder > ul li a:hover { background-color: #666; background-image: url(/media/droplist-ui-uncheck-hover.png); color: #ffffff; }
+div.droplist.multi > .holder > ul li a.selected { background-color: #3af; ; background-image: url(/media/droplist-ui-check.png); color: #fff; }
+div.droplist.multi > .holder > ul li a.selected:hover { background-color: #3af; background-image: url(/media/droplist-ui-check-hover.png); cursor:pointer; }

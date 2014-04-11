@@ -1,0 +1,261 @@
+a {text-decoration:none; color:#06c;}
+ul,li {padding:0px; margin:0px; list-style:none;}
+img {border:0px;}
+.text-shadow {text-shadow: 1px 0 1px #d5d5d5;}
+.section-header { font-family: arial; color: #FAFAFA; font-size: 18px; font-weight: bold; height: 40px; line-height: 40px; background: #000 url(/media/frag_hdr_bgtile.jpg) repeat-x; padding-left: 18px; text-shadow: 0px 1px 1px black; margin: 0px; }
+.section-header .button {display:block; width:129px; height:28px; line-height:28px; float:right; margin:5px 20px 0 0; background: url(/media/inside_nav_singlebtn.png) no-repeat; text-align:center; color:#eee; font-size:12px; font-weight:bold; text-shadow: 1px 0 1px #000; text-decoration:none;}
+.grey {background:#f3f3f3;}
+.clearfix {clear:both; height:1px; overflow:hidden;}
+.show {display:block;}
+.hide {display:none;}
+
+
+#site-branding {height:90px; }
+/*#site-section { background: url(/media/sectionhdr_bg_general_sap.png) no-repeat top right;}*/
+.sponsor-footer { height:45px; background:#fff url(/media/inside_footer_sap.png) no-repeat 10px 10px; border-top: 4px solid #06c; clear:both;}
+
+#site-section .sap-sponser { text-indent:-9999px; }
+
+.page-branding {float:left;}
+.page-branding h1 { clear:right; padding-left: 20px; font-size:26px; margin:9px 0; font-weight:normal; line-height:20px; height:20px;}
+.page-branding .breadcrumbs { padding-left: 20px; font-size:14px; line-height:1em;}
+.page-branding .breadcrumbs a {color:#06c;}
+.page-branding .breadcrumbs a.page {color:#434343;}
+#site-section #social-icons { margin: 5px 0 0 20px; padding: 0px; }
+
+#game-details {}
+
+
+
+#main-details {font-size:12px; background:#fff;}
+#main-details > div {float:left;}
+#main-details > .team {width:275px; height:335px; background:#f3f3f3;}
+#main-details > .team .wrapper {width:275px; height:316px; border-right:1px solid #ccc; float:left;}
+#main-details > .team .wrapper:last-child {}
+@media screen and (min-width: 763px) {
+	#main-details > .team .big-stat{ font-size:88px; color:#06c; font-weight:bold; /*margin:50px auto 15px auto;*/ margin:0 auto; text-align:center; height:100px; line-height:100px; }
+}
+@media screen and (min-width: 0px) and (max-width: 759px) {
+	#main-details > .team .big-stat{ font-size:88px; color:#06c; font-weight:bold; /*margin:50px auto 15px auto;*/ margin:0 auto; text-align:center; height:auto; line-height:60px; }
+}
+
+#main-details .win .big-stat {background: url(/media/gamedetail_pagetop_arrow.png) no-repeat center left;}
+#main-details > .team .logo {width:96px; margin:0px auto 0px auto; text-indent:-9999px;}  
+#main-details > .team h3,
+#main-details > .team h4 {margin:0 10px; line-height:20px;}
+#main-details > .team h3 {color:#333;}
+#main-details > .team h4 {font-size:12px; border-bottom:1px solid #ccc; text-align: left; padding-bottom: 10px;}
+#main-details > .team table {margin-left:10px;}
+#main-details > .team td.stat {width:35px; font-weight:bold;}
+
+#main-details .scoreboard {width:303px; font-weight:bold;}
+#main-details .scoreboard .wrapper { height:335px; border-left:1px solid #ccc; border-right:1px solid #ccc;}
+#main-details .scoreboard h3 {margin:0px; line-height:30px; text-indent:10px;}
+#main-details .scoreboard .total { text-align: center; }
+
+
+#main-details .game-status {padding: 0; font-size: 20px; color: #000; text-align:center; line-height: 40px; background:#f3f3f3; border-bottom:1px solid #fff;}
+#main-details > .team .other-links li { margin-left:2em; }
+
+.grid-caption { width: 50%; float: left; margin-left: 10px; margin-top: 3px; text-align: left; font-size:11px; font-weight:bold; font-family: Arial; color: #666; }
+
+
+
+#main-details table.line-score  { font-size:11px; width:302px; border-collapse: collapse;}
+#main-details table.line-score tr th {background: #e3e3e3; text-align:center; border-right:1px solid #fff; font-weight:bold;}
+#main-details table.line-score tr th:last-child { border-right: none;}
+#main-details table.line-score tr td {padding:2px 6px; line-height:20px; text-align:center; font-weight:normal;}
+#main-details table.line-score tr td:first-child {width:90px; line-height:10px; text-align:left;}
+#main-details table.line-score tr td .logo {float:left; text-indent:-9999px; margin-right:10px;}
+#main-details table.line-score .prd.inactive{ display: none; }
+#main-details table.line-score tr:last-child { background : #eee; }
+
+#main-details table.team-leaders { width:180px; }
+
+#main-details .links{margin:20px 8px 8px 8px; text-align:center;}
+#main-details .text {margin:0 8px 0px 8px;}
+#main-details h4 {margin:10px 8px;}
+
+#main-details .scoreboard .history  { font-weight:400; padding:0 10px; }
+#main-details .scoreboard .misc 	{ font-weight:400; padding:0 10px; }
+#main-details .scoreboard .officials { font-weight:400; padding:0 10px; }
+#main-details .scoreboard .officials  h4 { margin: 5px 0; padding-left: none; }
+#main-details .scoreboard .officials  li { padding-left: 10px; }
+/*** adspot ***/
+
+.ad-spot { text-align: center; padding-top: 30px; }
+
+
+
+
+.tabs {background: url(/media/gamedetail_tabs_bgtile.gif);}
+.nav-main {display:block; height: 44px; background:#e8e8e8 url(/media/gamedetail_tabs_right.png) repeat-x bottom right; }
+.nav-main li a {display:inline; float:left; height:36px; margin-top:8px; text-indent:-9999px; cursor:pointer;}
+.nav-main li.boxscore {margin-left:8px;}
+
+.nav-main li.boxscore a {width:119px; height:36px; background: url(/media/gamedetail_tabs_boxscore.png) no-repeat 0 -36px;}
+.nav-main li.playbyplay a {width:129px; height:36px; background: url(/media/gamedetail_tabs_playbyplay.png) no-repeat 0 -36px;}
+.nav-main li.playertracking a {width:129px; height:36px; background: url(/media/gamedetail_tabs_playertracking.png) no-repeat 0 -36px;}
+
+@media screen and (min-width: 0px) and (max-width: 759px) {
+    .nav-main li.boxscore a {width:100px; height:36px; background: url(/media/gamedetail_100tabs_boxscore.png) no-repeat 0 -36px;}
+    .nav-main li.playbyplay a {width:100px; height:36px; background: url(/media/gamedetail_100tabs_playbyplay.png) no-repeat 0 -36px;}
+    .nav-main li.playertracking a {width:100px; height:36px; background: url(/media/gamedetail_100tabs_playertracking.png) no-repeat 0 -36px;}
+}
+.nav-main li a.current {background-position: 0 0;}
+
+#game-details .description {background: #fff; font-size:12px;}
+#game-details .description .wrapper {padding:20px;}
+#game-details .description .image {float:right;}
+#game-details .description a {color:#06d; font-weight:bold;}
+
+
+/*** boxscore panel ***/
+
+#boxscore h2 { height: 42px; line-height: 42px; background: url(/media/inside_titlebar_bgtile.gif) repeat-x; margin: 0px; font-size: 16px; text-indent: 20px; }
+#playertracking h2 { height: 42px; line-height: 42px; background: url(/media/inside_titlebar_bgtile.gif) repeat-x; margin: 0px; font-size: 16px; text-indent: 20px; }
+
+/*** boxscore time filters ***/
+
+#stat-filter-section {clear:both; background: #bbb url(/media/inside_filter_bgtile.gif) repeat-x;}
+#stat-filter-section.closed .wrapper{display:none;}
+#stat-filter-section #time-filter {display:block; }
+#stat-filter-section #time-filter h3{ height:33px; line-height:33px; padding-left:40px; background: url(/media/inside_filter_arrow_right.png) no-repeat 22px 10px;  font-size:14px; color:#000; text-shadow: 1px 0 1px #d5d5d5; font-weight:bold; text-transform:uppercase; margin:0px;}
+#stat-filter-section.opened #time-filter h3{ background:#bbb url(/media/inside_filter_arrow_down.png) no-repeat 22px 10px;}
+#stat-filter-section .wrapper {padding:5px 20px; font-size:12px;}
+#stat-filter-section .wrapper h4 { margin-top: .5em; }
+#stat-filter-section .select {height:27px;}
+#stat-filter-section .select li {display:inline; float:left;}
+#stat-filter-section .select li.ot { display: none; }
+#stat-filter-section .select li.otg { display: none; }
+#stat-filter-section .select li a.lg{display:block; width:63px; height:27px; line-height:27px; background: transparent url(/media/inside_filter_btn_lg.png) no-repeat 0 -27px; color:#333; text-align:center;}
+#stat-filter-section .select li a.lg sup {line-height:1em;}
+#stat-filter-section .select li a.md{display:block; width:35px; height:27px; line-height:27px; background: transparent url(/media/gamedetail_filter_btn_md.png) no-repeat 0 -27px; color:#333; text-align:center;}
+#stat-filter-section .select li a.sm{display:block; width:28px; height:27px; line-height:27px; background: transparent url(/media/gamedetail_filter_btn_sm.png) no-repeat 0 -27px; color:#333; text-align:center;}
+#stat-filter-section .select li a.ui-active{ color:blue;}
+#stat-filter-section .description {background: transparent;}
+
+#event-range-update { display:block; width:63px; height:27px; line-height:27px; background: transparent url(/media/inside_filter_btn_lg.png) no-repeat 0 -27px; color:#333; text-align:center; float:right;}
+#stat-filter-section .wrapper.event-range { background: #ccc; padding-bottom: 20px; }
+
+/*** boxscore stat tables ***/
+
+#stat-table-section table {width:100%; border-spacing:0px; font-size:11px; font-weight:bold;}
+#stat-table-section table tr:nth-child(even) {background: #efeff0;}
+#stat-table-section table tr:nth-child(odd) {background: #fff;}
+#stat-table-section table th {height:32px; line-height:32px; padding:0 3px; background:#d7d7d7 url(/media/standings_table_hdr_bgtile.gif) repeat-x center right;}
+#stat-table-section table th.multi-line {line-height:12px;}
+#stat-table-section table td {text-align:center; height:30px; line-height:30px; border-right:1px solid #cdcdcd;}
+#stat-table-section table td:last-child {border-right:0px;}
+#stat-table-section table .player {width:125px; text-align:left; text-indent:3px;}
+#stat-table-section table a{color:#0066d1; text-decoration:none;}
+
+/*** playbyplay ***/
+
+#playbyplay { }
+#playbyplay .period-shortcuts { margin: 10px 30px 0px 10px; height:30px; }
+#playbyplay .period-shortcuts .buttonset { float:right; height:30px; }
+
+#playbyplay .period-table { width: 100%; }
+#playbyplay .period-table th { text-align: center; font-weight:bold; font-size: 16px;}
+#playbyplay .period-table td.vtm { text-align: left; padding-left:10px;}
+#playbyplay .period-table td.htm { text-align: right; padding-right:10px;}
+#playbyplay .period-table td.gametime { text-align: center; }
+#playbyplay .period-table td.neutral { text-align: center; }
+
+#playbyplay .jump { float:right; margin: 10px 30px; font-size:12px;  }
+
+#playbyplay .period-table { width:95%; border-spacing:0px; font-size:12px; margin:10px auto; border:1px solid #ccc;}
+#playbyplay .period-table:first-child table{margin:0 8px 8px 20px;}
+#playbyplay .period-table tr:nth-child(even) {background: #efeff0;}
+#playbyplay .period-table tr:nth-child(odd) {background: #fff;}
+#playbyplay .period-table th {height:32px; line-height:32px; padding:0 3px; background:#d7d7d7 url(/media/standings_table_hdr_bgtile.gif) repeat-x center right;}
+#playbyplay .period-table td {text-align:center; height:30px; border-right:1px solid #cdcdcd;}
+#playbyplay .period-table td:first-child {  text-indent:10px;}
+#playbyplay .period-table td:last-child {border-right:0px;}
+#playbyplay .period-table a{color:#0066d1; text-decoration:none;}
+#playbyplay .period-table tr.sp td { font-weight:bold; }
+
+/****** Dojo Grid custom CSS******/
+
+.dojoxGridHeader .dojoxGridCell { vertical-align: bottom !important; }
+.dojoxGridArrowButtonNode { float: none !important; margin: auto !important; }
+.dojoxGridSortUp .dojoxGridArrowButtonNode { background-position: 0px !important; }
+.dojoxGridSortDown .dojoxGridArrowButtonNode { background-position: -21px !important; }
+
+/****** Dojo Grid custom CSS******/
+
+/* Team Players Tab*/
+
+#gameDetailBoxscoreHomeGrid { width: 100%; height: 200px; }
+#gameDetailBoxscoreVisitGrid { width: 100%; height: 200px; }
+
+/* Team Players Tab*/
+
+/* Team Stat View Tab */
+#gridSection { display: block; width:100%; height: auto; background: white;} 
+.gridStatContainer { display: table; width:100%; height: auto; padding-bottom: 25px;}
+
+/*@media screen and (min-width: 763px) and (max-width: 1055px) {
+
+    #main-details .scoreboard {width:363px;}
+    #main-details .team:last-child .wrapper {border-right:0px;}
+
+}*/
+
+/* All the panel hidden untill page load */
+.panel { visibility: hidden; }
+
+
+@media screen and (min-width: 0px) and (max-width: 759px) {
+    /*
+     #page-gamedetails {padding-top:60px;}
+     #site-top-adspot {display:none;}
+     #site-section {padding-top:92px;}
+     #site-section .sap-sponser {display:none;}
+    #site-section #sponsor-branding {width:320px;}
+    .section-header {height:72px; background:#000 url(/media/frag_hdr_bgtile.png) repeat-x top left; font-size:15px; padding:0 18px; line-height:36px;}
+    #site-section .sap-sponser {padding:20px 55px !important;}
+    */
+
+    #site-section #social-icons { margin: 0px; padding: 0px; }
+
+    #site-section {height:50px; }
+    .page-branding h1 {font-size:16px; font-weight:bold; margin:5px 0; padding-left:5px;}
+    .page-branding .breadcrumbs {padding-left:5px;}
+    #site-section .sap-sponsor {display:none;}
+    #site-branding {height:50px;}
+    #site-section-title .breadcrumb {font-size:12px; padding-left:5px;}
+    #main-details .team {width:320px;}
+    #main-details .team .wrapper {width:320px; border-right:0px;}
+    .nav-main {width:320px;}
+    #main-details .scoreboard {width:320px;}
+    #main-details .scoreboard .wrapper {border-right:0px;}
+    #playbyplay .period-table th {font-size:12px;}
+    #playbyplay .period-table th {background: #cbcbcb url(/media/standings_table_hdr_bgtile.gif) repeat-x top left;}
+    #playbyplay .period-table td:first-child {text-indent:0px;}
+    #playbyplay .period-table td.htm,
+    #playbyplay .period-table td.vtm {width:137px;}
+
+    #playbyplay .jump { display:block; float:none; text-align: right;}
+    #playbyplay .period-table .pbpitem { padding: 5px; background:#ffffff;}
+    #playbyplay .period-table .pbpitem:nth-child(even) { background:#eaeaea;}
+    #playbyplay .period-table .pbpitem div { text-align: center; }
+	#playbyplay .period-table .pbpitem .description { background:transparent;}
+
+    #main-details { background: #f3f3f3; }
+    #main-details > .span3 { width:50%; height:270px;}
+    #main-details > .span3 .wrapper { width:auto; float:none; height:270px;}
+    #main-details > .span3.team .big-stat { font-size:50px; margin:0 auto; line-height:60px;}
+    #main-details > .span3.team h4 { text-align:center;}
+    #main-details > .span3.team .logo { margin: 0 auto;}
+
+    .select-range { clear: both; }
+    .event-range { clear: both; }
+}
+
+
+
+
+
+	

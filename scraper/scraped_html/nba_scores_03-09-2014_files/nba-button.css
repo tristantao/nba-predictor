@@ -1,0 +1,20 @@
+.buttonset { list-style-type: none; margin: 0; padding: 0; display:inline-block; }
+.buttonset li {float: left; margin: 0; padding:0; }
+
+.buttonset li a.ui-button { display:inline; height:27px; margin: 5px 0; padding: 5px 15px; background: url(/media/module_buttonset_light.png) 0px -28px repeat-x; color: #000000; line-height:27px; font-size: 14px; font-weight: 400; text-decoration:none; border: 1px solid #AAA; border-left: none; }
+
+.buttonset li a.ui-button.ui-active {color:#ffffff; text-shadow: 1px 1px 1px #0066CC; background-position: 0px 0px; border-color: #0066CC; box-shadow: 0 0 10px rgba(0,0,0,.5) inset; }
+
+.buttonset li:first-Child a.ui-button { border-left: 1px solid #AAAAAA; border-radius: 5px 0 0 5px; }
+.buttonset li:last-Child a.ui-button { border-radius: 0 5px 5px 0; }
+
+
+.buttonset.dark a.ui-button{ background: url(/media/module_buttonset_dark.png) 0px -28px repeat-x; color: #FFFFFF;  border-color: #222222; text-shadow: 1px 1px 1px #333333; }
+.buttonset.dark li:first-Child a.ui-button { border-left: 1px solid #222222; }
+
+.buttonset.dark a.ui-button.ui-active { border-color: #0A6DB0; text-shadow: 1px 1px 1px #0066CC; }
+.buttonset.dark li:first-Child a.ui-button.ui-active { border-color: #0A6DB0;  }
+
+.buttonset .ui-dropdown label { height:27px; margin: 5px 0; padding: 5px 30px 5px 15px; background: url(/media/ui-dropdown-button-arrow.png) no-repeat center right, url(/media/module_buttonset_light.png) 0px -28px repeat-x; color: #000000; line-height:27px; font-size: 14px; text-decoration:none; border: 1px solid #AAA; border-radius: 5px }
+.buttonset .ui-dropdown.ui-active label {background: url(/media/ui-dropdown-button-arrow.png) no-repeat center right, url(/media/module_buttonset_light.png) 0px -28px repeat-x; }
+.buttonset .ui-dropdown { float:left; } 

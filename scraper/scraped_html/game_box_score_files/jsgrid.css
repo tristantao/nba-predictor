@@ -1,0 +1,122 @@
+/**
+* jsgrids 
+*/
+
+table.jsgrid { margin-bottom: 0; border-spacing: 0; border-collapse: collapse; table-layout: fixed; }
+
+/** scrolling **/
+.jsgrid.outer { min-height:0%; }
+.jsgrid.inner { min-height:0%; overflow-x:auto; position: relative; }
+
+
+/** frozen columns **/
+td.frozen-cell { position: static; z-index: 10; }
+th.frozen-cell { position: static; z-index: 15; }
+
+
+/** cross hover **/
+.jsgrid .crosshover { background: #ccc !important; }
+
+/** sorting columns **/
+.sort-order-arrow { margin: 2px auto; width: 0; height: 0;}
+.sort-order-arrow:hover { cursor: pointer; }
+th.sorted.asc .sort-order-arrow { width: 10px; height: 8px; background:url('../../img/libs/jsgrid/sort-asc.png') top left no-repeat; }
+th.sorted.desc .sort-order-arrow { width: 10px; height: 8px; background:url('../../img/libs/jsgrid/sort-desc.png') bottom left no-repeat; }
+
+th.sortable span { cursor: pointer; }
+th.sorted { background: #f3f3ff; }
+
+/** footer **/
+.jsgrid.footer { background: #efefef; margin: 0; padding: 0px 5px; text-align: center; }
+.jsgrid.footer a { cursor: pointer; }
+.jsgrid.footer input { margin: 5px;}
+
+/** column arrangement **/
+.colarrange-controls { display: none; width: 42px; margin: 0 auto; text-align: center; }
+.colarrange-controls div { display: inline-block; margin: 2px;  }
+.colarrange-controls div:hover { cursor: pointer; }
+.colarrange-controls input { margin: 0; vertical-align: baseline; }
+
+
+/** pagination **/
+.pagination { display: inline-block;}
+.pagination a { color: blue; }
+.controls-showAllRows { padding: 3px 5px; font-size: .8em; background: #ccc; margin: 10px; }
+.current { font-weight: bold; color: black; }
+
+
+/** zebra striping **/
+table.jsgrid tr:nth-child(even) { background: #ffffff; }
+table.jsgrid tr:nth-child(odd) { background: #edecef; }
+
+
+
+/* 
+* custom for stats 
+*/
+
+.jsgrid { position: relative;}
+
+/** stats style **/
+.jsgrid.outer { background: #efefef; clear: both; }
+
+.jsgrid.gridStatContainer { width: auto; background: white; }
+
+table.jsgrid { border-right: 1px solid #eee;}
+table.jsgrid tr.labels { background-color: #0F5AB9; }
+table.jsgrid th,
+table.jsgrid td { min-width:38px; padding: 3px 4px; font-size: 10px; font-family: verdana, sans-serif; }
+table.jsgrid th { background-color: #0F5AB9; color: #FFF; font-weight: normal; text-align: center; border-top: none; border-left: 1px solid #053; }
+table.jsgrid th:first-child { border-left: none; } 
+table.jsgrid td.data-number { text-align: right; }
+
+/** header **/
+.jsgrid.header { text-align: right; }
+.jsgrid.header input { background: none; border: none; font-weight: bold; color: gray; text-decoration: underline; padding: 0; margin: 5px 0 5px 15px; }
+.jsgrid.header input:hover { cursor: pointer!important; }
+table.jsgrid .colarrange-controls { font-weight: bold; font-size: 1.1em; }
+.colarrange-controls div { margin: 0 2px; }
+.jsgrid.header input { margin: 5px;}
+
+
+/* footer */
+.jsgrid.footer { background: #ddd;  font-size: 10px;  font-family: verdana, sans-serif; position: relative; border-bottom:1px solid #0F5AB9; border-top:1px solid #ccc; }
+.jsgrid.footer a { color: #5D88AF; }
+.jsgrid.footer a.current { color: #000; font-weight: bold; }
+
+.jsgrid .pagination { width: 100%; }
+
+.jsgrid .page-row-choice { width: auto; color: #333; text-align: center; }
+.jsgrid .page-row-choice a { display: inline-block; margin: 0 3px; }
+
+.jsgrid .page-info { float: left; text-align: left; }
+.jsgrid .page-change-nav{ text-align: right; float: right; }
+.jsgrid .page-number-controls { display: inline-block; }
+
+.jsgrid .page-arrows, .jsgrid .page-number-controls a { margin: 0 3px; }
+
+/** more stats mode **/
+.jsgrid.morecolumns .colarrange-button,
+.jsgrid.morecolumns .toPNG { display: none; }
+.jsgrid.morecolumns .colarrange-morecolumns-button { color: blue;}
+.jsgrid.morecolumns .hidden-column { color: #000; opacity: .8; background: #fff; }
+
+/* colarrange mode **/
+.jsgrid.header input.colarrange-reset-button { display: none; }
+.jsgrid.header.colarrange .toPNG,
+.jsgrid.header.colarrange .colarrange-morecolumns-button { display: none; }
+.jsgrid.header.colarrange .colarrange-reset-button { display: inline-block; }
+.jsgrid.header.colarrange .colarrange-button { color: blue; }
+
+/* group headers */
+table.jsgrid tr.groups { background: #0F5AB9; }
+
+/* video annotation */
+.jsgrid.header .video-annotation { width: 60%; float: left; text-align: left; font-size: 14px; color: #666; padding: 3px 0 0 10px;}
+.jsgrid.header .video-annotation img { vertical-align: middle; padding: 0 2px 2px 0; }
+
+/* Mobile version */
+@media screen and (min-width: 0px) and (max-width: 759px) {
+	.jsgrid.header .video-annotation { width: 100%; padding: 10px; }
+	.jsgrid.header .video-annotation span { display: inline;}
+}

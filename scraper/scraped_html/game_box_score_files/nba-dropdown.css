@@ -1,0 +1,102 @@
+.ui-dropdown { position: relative; list-style-type: none; display: inline; margin:0; padding:0; }
+.ui-dropdown label { position: relative; background: url(/media/standings_table_arrow_down.png) no-repeat center right; padding-right: 15px; }
+.ui-dropdown.ui-active label { position: relative; background: url(/media/standings_table_arrow_down.png) no-repeat center right;  }
+.ui-dropdown.ui-disabled label { color: #999; }
+.ui-dropdown select { position: absolute; top: 1.5em; left: 0; display:none; z-index:100; font-size:14px; line-height:20px; max-height:300px; }
+
+.section-header .ui-dropdown { } 
+.section-header .ui-dropdown label { background: url(/media/ui-dropdown-arrow-right.png) no-repeat center left; padding-right: 0px; padding-left:15px; text-transform:uppercase; line-height:18px; font-size:14px; font-weight:bold; margin-right:15px; }
+.section-header .ui-dropdown.ui-active label { background: url(/media/ui-dropdown-arrow-down.png) no-repeat center left; } 
+
+
+.section-sub-header .ui-dropdown { } 
+.section-sub-header .ui-dropdown label { background: url(/media/ui-dropdown-arrow-right.png) no-repeat center left; padding-right: 0px; padding-left:15px; text-transform:uppercase; line-height:18px; font-size:14px; font-weight:bold; margin-right:15px; }
+.section-sub-header .ui-dropdown.ui-active label { background: url(/media/ui-dropdown-arrow-down.png) no-repeat center left; }
+
+.ui-more-info {width:12px; height:12px; display:inline; position:relative; left:-10px; cursor:pointer;}
+
+
+div.droplist { 
+ position: relative;
+ float:left;
+ font-size:13px;
+}
+
+div.droplist > a { 
+  background: #ffffff url(/media/ui-dropdown-arrow-right.png) no-repeat 10px 50%;
+  text-decoration:none;
+  display:block;
+  line-height:1.8em;
+  border-bottom: 1px solid #ddd;
+  color: #666;
+  padding : 5px 5px 5px 25px;
+  margin:0;
+  overflow:hidden;
+  height:2em;
+  white-space:nowrap;
+  text-overflow:ellipsis;
+  cursor:pointer;
+  font-weight:bold;  
+}
+
+div.droplist.open > a, div.droplist > a.ui-active {
+  background: #ffffff url(/media/ui-dropdown-arrow-down.png) no-repeat 10px 50%;   
+}
+
+div.droplist > a > span.label {
+  font-style: italic;
+  font-weight:normal;
+  color: #777;
+  padding-right:10px;
+
+}
+
+div.droplist > ul {
+  width:100%;
+  position:absolute;
+  list-style-type: none; 
+  padding: 0;
+  overflow:hidden;
+  margin:0;
+  box-shadow: 0 4px 4px rgba(0,0,0,.3); 
+  max-height:250px;
+  overflow-y:scroll;
+  z-index:50;
+  display:none;
+}
+
+div.droplist > ul > li {
+  padding:0;
+  margin:0;
+}
+
+div.droplist > ul > li > a { 
+  text-decoration:none;
+  display:block;
+  line-height:1.5em;
+  border-bottom: 1px solid #ddd;
+  color: #777;
+  margin:0;
+  padding : 5px 5px 5px 20px;
+  background:#ffffff;
+}
+
+div.droplist > ul > li > a:hover {
+  background: #3bf;
+  color: #ffffff;
+  border-bottom: 1px solid #19d;
+  -webkit-transition:background 0.1s linear;
+  -moz-transition:background 0.1s linear;
+  transition:background 0.1s linear;   
+}
+
+div.droplist > ul > li > a.selected {
+  background: #3bf;
+  color: #ffffff;
+  border-bottom: 1px solid #19d;
+  cursor: default;
+}
+
+div.droplist > ul > li:last-child > a {
+  border-bottom: none;
+}
