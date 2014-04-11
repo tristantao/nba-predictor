@@ -29,7 +29,7 @@ def findAllGames(html):
 	game_links = [yahoo_prefix + g.find('a')['href'] for g in games]
 	return game_links
 
-TARGET_LINK = 'http://sports.yahoo.com/nba/scoreboard/?date=2014-04-08&conf='
+TARGET_LINK = 'http://sports.yahoo.com/nba/scoreboard/?date=2014-04-09&conf='
 SAVE_DIR = '../data/box_scores/'
 
 print "[STATUS] Downloading {0}".format(TARGET_LINK)

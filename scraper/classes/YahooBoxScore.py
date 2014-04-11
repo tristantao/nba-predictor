@@ -59,7 +59,7 @@ class YahooBoxScore(object):
 		players = self.handlePlayerRows(away_rows, self.away_team) + self.handlePlayerRows(home_rows, self.home_team)
 		return players 
 	
-	def handlePlayerRows(self, stat_rows, team_name, status=False):
+	def handlePlayerRows(self, stat_rows, team_name):
 		"""
 		Input: A list representing rows of player statistics
 
@@ -74,25 +74,21 @@ class YahooBoxScore(object):
 				continue
 
 			player_name = player_name_html.text
-			# stats will contain inactive players, csv_stats will not
-			stats = {'status':'active'}
+
 			csv_stats = {}
 
 			for stat in player.findAll('td'):
-				if 'dimmed' in stat['class']:
-					continue
+				if len(player.findAll('td')) < 10: # break if we have less columns than needed
+					break
+				if not stat.has_attr('title'): # if we have a stat without a name
+					break
 				if 'dnp' in stat['class']:
-					stats['status'] = stat['title']
 					continue
 				stat_name = stat['title']
-				stats[stat_name] = stat.text 
 				csv_stats[stat_name] = stat.text
 
 			player_csv_stats = {'name':player_name,'team':team_name,'stats':csv_stats}
-			player_stats = {'name':player_name,'team':team_name,'stats':stats}
 
-			if status: # If status is true, include DNP players
-				player_list.append(player_stats)
-			elif not status and csv_stats != {}: # otherwise only include active players
+			if csv_stats != {}: # otherwise only include active players
 				player_list.append(player_csv_stats)
 		return player_list
