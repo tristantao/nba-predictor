@@ -74,7 +74,6 @@ class YahooBoxScore(object):
 				continue
 
 			player_name = player_name_html.text
-			print player_name
 			# stats will contain inactive players, csv_stats will not
 			stats = {'status':'active'}
 			csv_stats = {}

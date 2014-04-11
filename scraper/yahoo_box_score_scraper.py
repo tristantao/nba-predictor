@@ -12,11 +12,11 @@ import lib, time, csv, optparse
 from lib import requests
 from bs4 import BeautifulSoup
 from classes.YahooBoxScore import *
-import optparse
 
-claParser = optparse.OptionParser()
-(opts, args) = claParser.parse_args()
+parser = optparse.OptionParser()
+parser.add_option("-u", "--url", dest="target_url", help="specify the url to scrape", metavar="URL")
 
+(opts, args) = parser.parse_args()
 
 def flushStatsToCSV(player_stats, path):
 	"""
@@ -39,36 +39,40 @@ def flushStatsToCSV(player_stats, path):
 
 		wr.writerows(rows)
 
-if args == []: #resort to a default game
-	args.append('http://sports.yahoo.com/nba/san-antonio-spurs-dallas-mavericks-2014041006/')
-
-TARGET_LINK = args[0]
-SAVE_DIR = '../data/box_scores/'
-
-print "[STATUS] Downloading {0}".format(TARGET_LINK)
-r = requests.get(TARGET_LINK)
-
-if(r.status_code != requests.codes.ok):
-	print "ERROR: Request did not come back with OK status code"
-	exit()
-
-raw_html = r.text
-
-box_score = YahooBoxScore(raw_html, TARGET_LINK)
-home_team = box_score.home_team
-away_team = box_score.away_team
-game_date = box_score.game_date
-
-print "Game Date: {0}".format(game_date.strftime('%c'))
-print "{1} vs. {0}".format(away_team, home_team)
+def scrapeGameLink(link='http://sports.yahoo.com/nba/sacramento-kings-portland-trail-blazers-2014040922/', save_dir='../data/box_scores/'):
 
 
-FILENAME = "{0}_vs_{1}_{2}.csv".format(away_team, home_team, game_date.strftime('%d-%m-%Y'))
+	TARGET_LINK = link
+	SAVE_DIR = '../data/box_scores/'
 
-RELATIVE_PATH = SAVE_DIR+FILENAME
+	print "[STATUS] Downloading {0}".format(TARGET_LINK)
+	r = requests.get(TARGET_LINK)
+
+	if(r.status_code != requests.codes.ok):
+		print "ERROR: Request did not come back with OK status code"
+		exit()
+
+	raw_html = r.text
+
+	box_score = YahooBoxScore(raw_html, TARGET_LINK)
+	home_team = box_score.home_team
+	away_team = box_score.away_team
+	game_date = box_score.game_date
+
+	print "Game Date: {0}".format(game_date.strftime('%c'))
+	print "{1} vs. {0}".format(away_team, home_team)
+
+
+	FILENAME = "{0}_vs_{1}_{2}.csv".format(away_team, home_team, game_date.strftime('%d-%m-%Y'))
+
+	RELATIVE_PATH = SAVE_DIR+FILENAME
 
 
 
-print "[STATUS] Saving {0}".format(RELATIVE_PATH)
+	print "[STATUS] Saving {0}".format(RELATIVE_PATH)
 
-flushStatsToCSV(box_score.player_stats, RELATIVE_PATH)
+	flushStatsToCSV(box_score.player_stats, RELATIVE_PATH)
+
+
+if opts.target_url != None: #resort to a default game
+	scrapeGameLink(opts.target_url)
