@@ -8,10 +8,15 @@ a csv file.
 import sys
 sys.path.insert(0, 'lib') # Add our common library folder
 
-import lib, time, csv
+import lib, time, csv, optparse
 from lib import requests
 from bs4 import BeautifulSoup
 from classes.YahooBoxScore import *
+import optparse
+
+claParser = optparse.OptionParser()
+(opts, args) = claParser.parse_args()
+
 
 def flushStatsToCSV(player_stats, path):
 	"""
@@ -34,7 +39,10 @@ def flushStatsToCSV(player_stats, path):
 
 		wr.writerows(rows)
 
-TARGET_LINK = 'http://sports.yahoo.com/nba/san-antonio-spurs-dallas-mavericks-2014041006/'
+if args == []: #resort to a default game
+	args.append('http://sports.yahoo.com/nba/san-antonio-spurs-dallas-mavericks-2014041006/')
+
+TARGET_LINK = args[0]
 SAVE_DIR = '../data/box_scores/'
 
 print "[STATUS] Downloading {0}".format(TARGET_LINK)
