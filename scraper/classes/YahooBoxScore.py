@@ -94,5 +94,4 @@ class YahooBoxScore(object):
 				player_list.append(player_stats)
 			elif not status and csv_stats != {}: # otherwise only include active players
 				player_list.append(player_csv_stats)
-
 		return player_list

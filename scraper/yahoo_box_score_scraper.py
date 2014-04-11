@@ -27,7 +27,7 @@ def flushStatsToCSV(player_stats, path):
 
 		rows = [csv_header]
 		for player in player_stats:
-			row = sorted(player_stats[0]['stats'].items(), key=lambda x: x[0])
+			row = sorted(player['stats'].items(), key=lambda x: x[0])
 
 			sorted_values = [player['name'],player['team']]+[r[1] for r in row]
 			rows.append(sorted_values)
