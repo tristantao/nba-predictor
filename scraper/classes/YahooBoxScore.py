@@ -10,16 +10,17 @@ sys.path.insert(0, '../lib') # Add our common library folder
 
 from bs4 import BeautifulSoup
 import lib
+from lib.dateutil import parser
 
 class YahooBoxScore(object):
 
 	def __init__(self, raw_html, src):
 		bs_html = BeautifulSoup(raw_html)
 		self.src = src
-		self.game_date = self.parseDate(bs_html)
+		self.game_date = parser.parse(self.parseDate(bs_html))
 		self.home_team = self.parseTeams(bs_html,side='home')
 		self.away_team = self.parseTeams(bs_html,side='away')
-		self.players = self.parsePlayers(bs_html)
+		self.player_stats = self.parsePlayers(bs_html)
 
 	def parseDate(self, bs_html):
 
@@ -39,6 +40,12 @@ class YahooBoxScore(object):
 		return team_name
 
 	def parsePlayers(self, bs_html):
+		"""
+		Input: BeautifulSoup object
+		
+		Output: List of dictionaries for the players
+		Example: [{name: 'Tony Parker', team:'San Antonio',stats:{'Points':20, etc...}},..]
+		"""
 		# caution: there might be more than one 'yom-app full' div
 		app_html = bs_html.find('div',{'class':'yom-app full'})
 		score_data = app_html.findAll('div',{'class':'data-container'})
@@ -46,8 +53,21 @@ class YahooBoxScore(object):
 		away_team_stats = score_data[0].find('tbody')
 		home_team_stats = score_data[1].find('tbody')
 
-		players = []
-		for player in away_team_stats.findAll('tr'):
+		away_rows = away_team_stats.findAll('tr')
+		home_rows = home_team_stats.findAll('tr')
+
+		players = self.handlePlayerRows(away_rows, self.away_team) + self.handlePlayerRows(home_rows, self.home_team)
+		return players 
+	
+	def handlePlayerRows(self, stat_rows, team_name, status=False):
+		"""
+		Input: A list representing rows of player statistics
+
+		Output: A list of dictionaries representing players
+		Example: [{name: 'Tony Parker', team:'San Antonio',stats:{'Points':20, etc...}},..]
+		"""
+		player_list = []
+		for player in stat_rows:
 			player_name_html = player.find('th').find('a')
 			
 			if player_name_html == None:
@@ -55,13 +75,24 @@ class YahooBoxScore(object):
 
 			player_name = player_name_html.text
 			
+			# stats will contain inactive players, csv_stats will not
 			stats = {'status':'active'}
+			csv_stats = {}
+
 			for stat in player.findAll('td'):
 				if 'dnp' in stat['class']:
 					stats['status'] = stat['title']
 					continue
-				stats[stat['title']] = stat.text
+				stat_name = stat['title']
+				stats[stat_name] = stat.text 
+				csv_stats[stat_name] = stat.text
 
-			player_stats = {'name':player_name,'stats':stats}
-			players.append(player_stats)
-		return players
+			player_csv_stats = {'name':player_name,'team':team_name,'stats':csv_stats}
+			player_stats = {'name':player_name,'team':team_name,'stats':stats}
+
+			if status: # If status is true, include DNP players
+				player_list.append(player_stats)
+			elif not status and csv_stats != {}: # otherwise only include active players
+				player_list.append(player_csv_stats)
+
+		return player_list
