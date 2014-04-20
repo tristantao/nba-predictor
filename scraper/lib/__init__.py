@@ -7,6 +7,7 @@ import functools
 import inspect
 import re
 import sys
+import os
 
         
 def main(fn):
@@ -93,3 +94,18 @@ def interact():
     banner += '    exit() exits the program'
     
     code.interact(banner.format(cur_frame[1], cur_frame[2]), None, namespace)
+
+# User defined helper functions
+# User-Appended Common Functions
+def getCSVFiles(in_dir):
+    """
+    This methods visits the designated folder and returns a
+    list of csv files
+    """
+    try:
+        files = [f for f in os.listdir(in_dir) if (os.path.isfile(os.path.join(in_dir,f)) and str(f).endswith(".csv"))]
+    except OSError as e:
+        print e
+        files = []
+
+    return files

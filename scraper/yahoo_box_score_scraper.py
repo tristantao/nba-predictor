@@ -8,15 +8,18 @@ a csv file.
 import sys
 sys.path.insert(0, 'lib') # Add our common library folder
 
-import lib, time, csv, optparse
+import lib, time, csv, optparse, dataset
 from lib import requests
 from bs4 import BeautifulSoup
 from classes.YahooBoxScore import *
+from datetime import date
 
 parser = optparse.OptionParser()
 parser.add_option("-u", "--url", dest="target_url", help="specify the url to scrape", metavar="URL")
 
 (opts, args) = parser.parse_args()
+
+
 
 def flushStatsToCSV(player_stats, path):
 	"""
@@ -39,7 +42,7 @@ def flushStatsToCSV(player_stats, path):
 
 		wr.writerows(rows)
 
-def scrapeGameLink(link='http://sports.yahoo.com/nba/sacramento-kings-portland-trail-blazers-2014040922/', save_dir='../data/box_scores/'):
+def scrapeGameLink(link='http://sports.yahoo.com/nba/boston-celtics-trail-blazers-2014040922/', save_dir='../data/box_scores/', target_date=date.today()):
 
 
 	TARGET_LINK = link
@@ -54,7 +57,8 @@ def scrapeGameLink(link='http://sports.yahoo.com/nba/sacramento-kings-portland-t
 
 	raw_html = r.text
 
-	box_score = YahooBoxScore(raw_html, TARGET_LINK)
+	box_score = YahooBoxScore(raw_html, TARGET_LINK, target_date)
+	box_score.uploadToDB(db)
 	home_team = box_score.home_team
 	away_team = box_score.away_team
 	game_date = box_score.game_date
@@ -63,15 +67,16 @@ def scrapeGameLink(link='http://sports.yahoo.com/nba/sacramento-kings-portland-t
 	print "{1} vs. {0}".format(away_team, home_team)
 
 
-	FILENAME = "{0}_vs_{1}_{2}.csv".format(away_team, home_team, game_date.strftime('%d-%m-%Y'))
+	FILENAME_CSV = "{0}_vs_{1}_{2}.csv".format(away_team, home_team, game_date.strftime('%d-%m-%Y'))
+	FILENAME_JSON = "{0}_vs_{1}_{2}.json".format(away_team, home_team, game_date.strftime('%d-%m-%Y'))
 
-	RELATIVE_PATH = SAVE_DIR+FILENAME
+	RELATIVE_PATH = SAVE_DIR+FILENAME_CSV
 
 
 
 	print "[STATUS] Saving {0}".format(RELATIVE_PATH)
 
-	flushStatsToCSV(box_score.player_stats, RELATIVE_PATH)
+	flushStatsToCSV(box_score.player_stats, SAVE_DIR + FILENAME_CSV)
 
 
 if opts.target_url != None: #resort to a default game
