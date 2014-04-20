@@ -9,26 +9,20 @@ import sys
 sys.path.insert(0, '../lib') # Add our common library folder
 
 from bs4 import BeautifulSoup
-import lib
+import lib, sqlalchemy
 from lib.dateutil import parser
+from datetime import date,datetime
 
 class YahooBoxScore(object):
 
-	def __init__(self, raw_html, src):
+	def __init__(self, raw_html, src, target_date=date.today()):
 		bs_html = BeautifulSoup(raw_html)
 		self.src = src
-		self.game_date = parser.parse(self.parseDate(bs_html))
+		self.game_date = target_date
 		self.home_team = self.parseTeams(bs_html,side='home')
 		self.away_team = self.parseTeams(bs_html,side='away')
 		self.player_stats = self.parsePlayers(bs_html)
 
-	def parseDate(self, bs_html):
-
-		game_year = self.src[-11:-7] # this is really hacky, basically stripping the url for the year
-
-		nav = bs_html.find('ul',{'class':'nav-list final'})
-		game_date = nav.find('li',{'class':'left'}).text
-		return ' '.join([game_date,game_year])
 
 	def parseTeams(self, bs_html, side='home'):
 		team_html = bs_html.find('div',{'class':'team '+side})
@@ -92,3 +86,46 @@ class YahooBoxScore(object):
 			if csv_stats != {}: # otherwise only include active players
 				player_list.append(player_csv_stats)
 		return player_list
+	def uploadToDB(self,db):
+		games = db['games']
+		box_scores = db['box_scores']
+		game_data = {
+			'away_team':self.away_team,
+			'home_team':self.home_team,
+			'game_date':self.game_date
+		}
+		print "uploading box score record to DB"
+		games.upsert(game_data,['away_team','home_team','game_date'],ensure=False)
+
+		game_id = games.find_one(away_team=self.away_team,home_team=self.home_team, game_date=self.game_date)['game_id']
+		for player in self.player_stats:
+			fgm,fga = player['stats']['Field Goals'].split('-')
+			ftm,fta = player['stats']['Free Throws'].split('-')
+			three_a,three_m = player['stats']['Three Pointers'].split('-')
+
+			box_data = {
+				'game_id':game_id,
+				'player_name':player['name'],
+				'team':player['team'],
+				'points':player['stats']['Points Scored'],
+				'steals':player['stats']['Steals'],
+				'assists':player['stats']['Assists'],
+				'total_rebounds':player['stats']['Total Rebounds'],
+				'def_rebounds':player['stats']['Defensive Rebounds'],
+				'off_rebounds':player['stats']['Offensive Rebounds'],
+				'blocked_shots':player['stats']['Blocked Shots'],
+				'blocks_against':player['stats']['Blocks Against'],
+				'plus_minus':player['stats']['Plus Minus'],
+				'personal_fouls':player['stats']['Personal Fouls'],
+				'turnovers':player['stats']['Turnovers'],
+				'game_date':self.game_date,
+				'fg_made':fgm,
+				'fg_attempted':fga,
+				'ft_made':ftm,
+				'ft_attempted':fta,
+				'3pt_made':three_m,
+				'minutes_played':player['stats']['Minutes Played'],
+				'3pt_attempted':three_a,
+				'last_updated': datetime.utcnow().isoformat()
+			}
+			box_scores.upsert(box_data,['game_id','player_name','team'],ensure=False)
