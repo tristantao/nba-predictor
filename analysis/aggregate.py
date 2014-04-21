@@ -28,7 +28,6 @@ def get_catalog_dict(catalog_dir):
 			if '.csv' in check_file:
 				catalogs[os.path.join(curdir,check_file)] = check_file
 	print "Grabbed catalog_dict, found %s items" % len(catalogs)
-
 	return catalogs
 
 
@@ -61,21 +60,4 @@ def join_boxscores(catalog_dir, output_dir_path):
 
 join_boxscores(os.path.join(os.environ['ROOT'], 'data/box_scores/'),
 	os.path.join(os.environ['ROOT'], 'analysis/', 'joined.csv'))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
