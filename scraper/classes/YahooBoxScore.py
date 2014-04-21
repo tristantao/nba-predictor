@@ -22,7 +22,7 @@ class YahooBoxScore(object):
 		self.home_team = self.parseTeams(bs_html,side='home')
 		self.away_team = self.parseTeams(bs_html,side='away')
 		self.player_stats = self.parsePlayers(bs_html)
-
+		self.game_type = self.getGameType(self.game_date)
 
 	def parseTeams(self, bs_html, side='home'):
 		team_html = bs_html.find('div',{'class':'team '+side})
@@ -86,6 +86,26 @@ class YahooBoxScore(object):
 			if csv_stats != {}: # otherwise only include active players
 				player_list.append(player_csv_stats)
 		return player_list
+
+	def getGameType(self, game_date):
+		game_type = 'regular season'
+		if game_date > date(2014,4,18):
+			game_type = 'postseason' 
+		elif game_date < date(2014,4,18) and game_date >= date(2013,10,28):
+			game_type = "regular season"
+		elif game_date < date(2013,10,28) and game_date >= date(2013,8,1):
+			game_type = "preseason"
+		elif game_date < date(2013,8,1) and game_date >= date(2013,4,19):
+			game_type = 'postseason'
+		elif game_date < date(2013,4,19) and game_date >= date(2013,10,28):
+			game_type = "regular season"
+		elif game_date < date(2012,10,27) and game_date >= date(2012,8,1):
+			game_type = "preseason"
+		elif game_date < date(2012,8,1) and game_date >= date(2012,4,25):
+			game_type = 'postseason'
+		elif game_date < date(2012,4,24) and game_date >= date(2011,11,24):
+			game_type = "regular season"
+		return game_type
 	def uploadToDB(self,db):
 		games = db['games']
 		box_scores = db['box_scores']
@@ -126,6 +146,7 @@ class YahooBoxScore(object):
 				'3pt_made':three_m,
 				'minutes_played':player['stats']['Minutes Played'],
 				'3pt_attempted':three_a,
+				'game_type':self.game_type,
 				'last_updated': datetime.utcnow().isoformat()
 			}
 			box_scores.upsert(box_data,['game_id','player_name','team'],ensure=False)

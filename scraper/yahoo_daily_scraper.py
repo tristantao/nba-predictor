@@ -15,7 +15,7 @@ from datetime import date,timedelta
 
 from yahoo_box_score_scraper import scrapeGameLink
 
-target_date = date.today()-timedelta(days=50) # default is to scrape today's link
+target_date = date(2013,4,8) # default is to scrape today's link
 DAYS_BACK = 365
 
 
