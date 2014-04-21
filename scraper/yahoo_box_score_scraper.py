@@ -13,13 +13,19 @@ from lib import requests
 from bs4 import BeautifulSoup
 from classes.YahooBoxScore import *
 from datetime import date
+import config
 
 parser = optparse.OptionParser()
 parser.add_option("-u", "--url", dest="target_url", help="specify the url to scrape", metavar="URL")
 
 (opts, args) = parser.parse_args()
 
+db_user = config.db['user']
+db_pass = config.db['password']
+db_host = config.db['host']
+db_schema = config.db['database']
 
+db = dataset.connect('mysql://{0}:{1}@{2}/{3}'.format(db_user,db_pass,db_host,db_schema))
 
 def flushStatsToCSV(player_stats, path):
 	"""
