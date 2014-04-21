@@ -19,20 +19,16 @@ def get_catalog_dict(catalog_dir):
 	dict <K,V> format of <relative_path_dir+file_name, file_name>
 	Will traverse sub-directories.
 	example:
-	{"temp/SCEC_DC/1999.catalog":"1999.catalog"}
+	{"~/path-to/data/box_scores/Indiana_vs_New York_19-03-2014.csv': 'Indiana_vs_New York_19-03-2014.csv"}
 	'''
 	catalogs = {}
 	for curdir, dirs, files in os.walk(catalog_dir):
 		for check_file in files:
 			if '.csv' in check_file:
 				catalogs[os.path.join(curdir,check_file)] = check_file
-				print parse_boxscore_names(check_file)
-				break
-		break
-	print "Grabbed catalog_dict"
-	return catalogs
+	print "Grabbed catalog_dict, found %s items" % len(catalogs)
 
-print get_catalog_dict(os.path.join(os.environ['ROOT'], 'data/box_scores/'))
+	return catalogs
 
 
 def join_boxscores(catalog_dir, output_dir):
@@ -41,10 +37,13 @@ def join_boxscores(catalog_dir, output_dir):
 	It will then join the data into a single csv (while adding 3 more columans, team1, team2 and date)
 	to output to output_dir,
 	'''
+	box_catalog = get_catalog_dict(catalog_dir)
 
 
 
 
+
+print join_boxscores(os.path.join(os.environ['ROOT'], 'data/box_scores/'), 'pass.csv')
 
 
 
