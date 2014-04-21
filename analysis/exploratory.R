@@ -2,14 +2,13 @@ setwd('/Users/t-rex-Box/Desktop/work/nba-predictor/')
 source('analysis/util.R')
 
 allNBA <- read.csv("analysis/joined.csv", header = TRUE, stringsAsFactors = FALSE)
-allNBA$Date = as.Date(allNBA$Date)
+allNBA$Date = as.Date(allNBA$Date, "%d-%m-%Y") #format: 17-04-2013
 
 template = data.frame(Team1 = character(),
                          Team2 = character(),
                          Date = as.Date(character()),
                          Team1_Score = numeric(),
                          Team2_Score = numeric())
-
 aggrBasic = function(dataframe, outputData) {
   #given a df we'll do a simple aggr
   #modifies the given outputData
@@ -26,3 +25,4 @@ aggrBasic = function(dataframe, outputData) {
 }
 
 simpleAggr = getPerGameData(allNBA, template, aggrBasic)
+
