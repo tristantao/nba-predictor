@@ -21,7 +21,8 @@ feature_vectors$Team2_avg_pnt_top_3_players_6 = NA
 
 last_x_games = function(data, x, team, game_date) {
   #Given x and data, it'll return data from up to x games ago, regardless of data.
-  #Data needs a $Team1, $Team2, and $Date column
+  #Data needs a $Team1, $Team2, and $Date column.
+  #Usage: last_x_games(simpleAggr, 10, 'Utah', as.Date('2013-04-17'))
   sub_table = data[data$Team1 == team |
                      data$Team2 == team &
                      (data$Date > game_date + 100) #look back 100 days
@@ -30,10 +31,20 @@ last_x_games = function(data, x, team, game_date) {
   return (sub_table[1:x,])
 }
 
-last_x_games(simpleAggr, 10, 'Utah', as.Date('2013-04-17'))
+#last_x_games(simpleAggr, 10, 'Utah', as.Date('2013-04-17'))
 
 for (simple_index in 1:nrow(simpleAggr)){ 
-    
+  team1_sub_hist = last_x_games(allNBA,
+                              100,
+                              simpleAggr[simple_index,]$Team1,
+                              simpleAggr[simple_index,]$Date)
+  team2_sub_hist = last_x_games(allNBA,
+                                100,
+                                simpleAggr[simple_index,]$Team2,
+                                simpleAggr[simple_index,]$Date)
+  
+  print (team1_hist)
+  break
 }
 
 
