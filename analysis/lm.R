@@ -20,6 +20,7 @@ feature_vectors$Team2_avg_pnt_top_3_players_6 = NA
 
 lm_generic_template = data.frame(Team1 = character(), #This will be used by both team1 and team2, so generic data points
                          Team2 = character(),
+                         Team_Score = numeric(),
                          Date = as.Date(character()),
                          Team_win_last_6 = numeric(),
                          Team_away_win_percentage_10 = numeric(),
@@ -46,16 +47,9 @@ lm_feature_aggr = function(dataframe, outputData) {
                              Date = dataframe$Date[1],
                              Team1_Score = sum(dataframe$Points.Scored[dataframe$Team1 == dataframe$Team]),
                              Team2_Score = sum(dataframe$Points.Scored[dataframe$Team2 == dataframe$Team]),
-
-                             Team1_win_last_6 = sum(dataframe$Points.Scored[dataframe$Team1 == dataframe$Team]),
-                             Team1_win_last_6 = sum(dataframe$Points.Scored[dataframe$Team2 == dataframe$Team]),
-
-                             Team1_away_win_percentage_10 = sum(dataframe$Points.Scored[dataframe$Team1 == dataframe$Team]),
-                             Team2_away_win_percentage_10 = sum(dataframe$Points.Scored[dataframe$Team2 == dataframe$Team]),
-                             
-                             Team1_avg_pnt_top_3_players_6 = sum(dataframe$Points.Scored[dataframe$Team1 == dataframe$Team]),
-                             Team2_avg_pnt_top_3_players_6 = sum(dataframe$Points.Scored[dataframe$Team2 == dataframe$Team])
-    )
+                             Team_win_last_6 = sum(dataframe$Points.Scored[dataframe$Team1 == dataframe$Team]),
+                             Team_away_win_percentage_10 = sum(dataframe$Points.Scored[dataframe$Team1 == dataframe$Team]),
+                             Team_avg_pnt_top_3_players_6 = sum(dataframe$Points.Scored[dataframe$Team1 == dataframe$Team]))
     outputData = rbind(outputData, appendFrame)
   }
   return (outputData)
@@ -71,7 +65,7 @@ for (simple_index in 1:nrow(simpleAggr)){
                                 simpleAggr[simple_index,]$Team2,
                                 simpleAggr[simple_index,]$Date)
   #CANT GET DATA FROM BOTH TEAM -____-
-  team1_custom_consolidated = getPerGameData(team1_sub_hist, lm_generic_template, lm_feature_aggr, lookback=6) #6? hmm
+  team1_custom_consolidated = getPerGameData(team1_sub_hist, lm_generic_template, lm_feature_aggr, lookback=1) #6? hmm
   feature_vectors = 
   #simpleAggr = getPerGameData(allNBA, template, aggrBasic)
   print (team1_hist)
