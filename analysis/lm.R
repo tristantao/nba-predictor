@@ -21,12 +21,12 @@ feature_vectors$Team2_avg_pnt_top_3_players_6 = NA
 
 days_win_percentage = function(data, team, days=-1, away=FALSE) {
   #calculates the win percentage of a team over the last few days
-  if (away) { data = data[data$Team2==data] } #only calculate away data
+  if (away) { data = data[data$Team2==team,] } #only calculate away data
   if (days > 0) {
     most_recent_date = max(data$Date)
     print (most_recent_date)
     print (dim(data))
-    data = data[(data$Date + days) > most_recent_date,] #get the dates upt to last days
+    data = data[(data$Date + days) > most_recent_date,] #get the dates up to last days, no bound on future
     print (dim(data))
   }
   game_days = unique(data$Date)
@@ -44,11 +44,6 @@ days_win_percentage = function(data, team, days=-1, away=FALSE) {
   }
   return (wins/length(game_days))
 }
-
-sub_table = data[(data$Team1 == team |
-                    data$Team2 == team) &
-                   (data$Date - days) < game_date #look back days
-                 ,]
 
 last_days_games = function(data, days, team, game_date) {
   #Given x and data, it'll return data from up to x days ago, regardless of data.
@@ -80,8 +75,11 @@ for (simple_index in 1:nrow(simpleAggr)){
   
   #CANT GET DATA FROM BOTH TEAM -____- Gotta manually attach it.
   #CURRENT ONLY 10 WEEKS
-  team1_percentage = days_win_percentage(team1_sub_hist, team1,days=2)
-  team2_percentage = days_win_percentage(team2_sub_hist, team2)
+  team1_percentage = days_win_percentage(team1_sub_hist, team1, days=70)
+  team2_percentage = days_win_percentage(team2_sub_hist, team2, days=70)
+
+  team1_away_percentage = days_win_percentage(team1_sub_hist, team1, days=70, away=TRUE)
+  team2_away_percentage = days_win_percentage(team2_sub_hist, team2, days=70, away=TRUE)
 
   appendFrame = data.frame(Team1 = dataframe$Team1[1],
                            Team2 = dataframe$Team2[1],
