@@ -9,6 +9,7 @@ simpleAggr$Team1 = as.character(simpleAggr$Team1)
 simpleAggr$Team2 = as.character(simpleAggr$Team2)
 
 feature_vectors = simpleAggr #we'll be apending to this, so we'll make a copy
+
 feature_vectors$Team1_win_last_6 = NA
 feature_vectors$Team2_win_last_6 = NA
 
@@ -18,25 +19,92 @@ feature_vectors$Team2_away_win_percentage_10 = NA
 feature_vectors$Team1_avg_pnt_top_3_players_6 = NA
 feature_vectors$Team2_avg_pnt_top_3_players_6 = NA
 
+days_win_percentage = function(data, team, days=-1, away=FALSE) {
+  #calculates the win percentage of a team over the last few days
+  if (away) { data = data[data$Team2==team,] } #only calculate away data
+  if (days > 0) {
+    most_recent_date = max(data$Date)
+    print (most_recent_date)
+    print (dim(data))
+    data = data[(data$Date + days) > most_recent_date,] #get the dates up to last days, no bound on future
+    print (dim(data))
+  }
+  game_days = unique(data$Date)
 
-last_x_games = function(data, x, team, game_date) {
-  #Given x and data, it'll return data from up to x games ago, regardless of data.
-  #Data needs a $Team1, $Team2, and $Date column
-  sub_table = data[data$Team1 == team |
-                     data$Team2 == team &
-                     (data$Date > game_date + 100) #look back 100 days
-    ,]
+  wins = 0
+  for (day in game_days) {
+    day_game_data = data[data$Date == day,]
+    if (day_game_data$Team1[1] == team) { #first team
+      if (score(day_game_data, team) > score(day_game_data, day_game_data$Team2[1])) { wins = wins + 1}
+    } else if (day_game_data$Team2[1] == team) { #second team
+      if (score(day_game_data, team) > score(day_game_data, day_game_data$Team1[1])) { wins = wins + 1}
+    } else {
+      print ("Unknown Game in days_win_percentage()")
+    }
+  }
+  return (wins/length(game_days))
+}
+
+last_days_games = function(data, days, team, game_date) {
+  #Given x and data, it'll return data from up to x days ago, regardless of data.
+  #Data needs a $Team1, $Team2, and $Date column.
+  #Usage: last_days_games(simpleAggr, 10, 'Utah', as.Date('2013-04-17'))
+  sub_table = data[((data$Team1 == team |
+                     data$Team2 == team) &
+                     (data$Date + days) >= game_date  & data$Date < game_date) #date bound, [days ago, today)
+                   ,]
+    #  data[(data$Date + days) > most_recent_date,]
+    #(data$Date + days) > most_recent_date
   sub_table = sub_table[with(sub_table, order(Date, decreasing=TRUE)), ]
-  return (sub_table[1:x,])
+  return (sub_table)
 }
 
-last_x_games(simpleAggr, 10, 'Utah', as.Date('2013-04-17'))
+for (simple_index in 1:nrow(simpleAggr)){
+  team1 = simpleAggr[simple_index,]$Team1
+  team2 = simpleAggr[simple_index,]$Team1
+  
+  team1_sub_hist = last_days_games(allNBA,
+                                20,
+                                team1,
+                                simpleAggr[100,]$Date)
+  unique(team1_sub_hist$Date)
+  team2_sub_hist = last_days_games(allNBA,
+                                70,
+                                team2,
+                                simpleAggr[simple_index,]$Date)
+  
+  #CANT GET DATA FROM BOTH TEAM -____- Gotta manually attach it.
+  #CURRENT ONLY 10 WEEKS
+  team1_percentage = days_win_percentage(team1_sub_hist, team1, days=70)
+  team2_percentage = days_win_percentage(team2_sub_hist, team2, days=70)
 
-for (simple_index in 1:nrow(simpleAggr)){ 
-    
+  team1_away_percentage = days_win_percentage(team1_sub_hist, team1, days=70, away=TRUE)
+  team2_away_percentage = days_win_percentage(team2_sub_hist, team2, days=70, away=TRUE)
+
+  appendFrame = data.frame(Team1 = dataframe$Team1[1],
+                           Team2 = dataframe$Team2[1],
+                           Date = dataframe$Date[1],
+                           Team1_Score = sum(dataframe$Points.Scored[dataframe$Team1 == dataframe$Team]),
+                           Team2_Score = sum(dataframe$Points.Scored[dataframe$Team2 == dataframe$Team]),
+                           feature_vectors$Team1_win_last_6 = team1_percentage,
+                           feature_vectors$Team2_win_last_6 = team2_percentage,
+                           feature_vectors$Team1_away_win_percentage_10 = NA,
+                           feature_vectors$Team2_away_win_percentage_10 = NA,
+                           feature_vectors$Team1_avg_pnt_top_3_players_6 = NA,
+                           feature_vectors$Team2_avg_pnt_top_3_players_6 = NA
+  )
+
+  feature_vectors = rbind(feature_vectors, appendFrame)
+  break
 }
-
-
+"
+feature_vectors$Team1_win_last_6 = NA
+feature_vectors$Team2_win_last_6 = NA
+feature_vectors$Team1_away_win_percentage_10 = NA
+feature_vectors$Team2_away_win_percentage_10 = NA
+feature_vectors$Team1_avg_pnt_top_3_players_6 = NA
+feature_vectors$Team2_avg_pnt_top_3_players_6 = NA
+"
 #Do this after
 #flip = runif(nrow(feature_vectors))
 #train = feature_vectors[flip > .85,]
@@ -55,3 +123,28 @@ away wins scaled by total number of away games
 
 "
 
+
+lm_generic_template = data.frame(Team1 = character(), #This will be used by both team1 and team2, so generic data points
+                                 Team2 = character(),
+                                 Team_Score = numeric(),
+                                 Date = as.Date(character()),
+                                 Team_win_last_6 = numeric(),
+                                 Team_away_win_percentage_10 = numeric(),
+                                 Team_avg_pnt_top_3_players_6 = numeric())
+
+
+lm_feature_aggr = function(dataframe, outputData) {
+  #Given a dataframe for a single game, returns the aggregated data that includes the features.
+  if (nrow(dataframe) > 0) { #this should reflect template
+    appendFrame = data.frame(Team1 = dataframe$Team1[1],
+                             Team2 = dataframe$Team2[1],
+                             Date = dataframe$Date[1],
+                             Team1_Score = sum(dataframe$Points.Scored[dataframe$Team1 == dataframe$Team]),
+                             Team2_Score = sum(dataframe$Points.Scored[dataframe$Team2 == dataframe$Team]),
+                             Team_win_last_6 = sum(dataframe$Points.Scored[dataframe$Team1 == dataframe$Team]),
+                             Team_away_win_percentage_10 = sum(dataframe$Points.Scored[dataframe$Team1 == dataframe$Team]),
+                             Team_avg_pnt_top_3_players_6 = sum(dataframe$Points.Scored[dataframe$Team1 == dataframe$Team]))
+    outputData = rbind(outputData, appendFrame)
+  }
+  return (outputData)
+}

@@ -4,6 +4,12 @@ simple_aggr_template = data.frame(Team1 = character(),
                                   Team1_Score = numeric(),
                                   Team2_Score = numeric())
 
+score = function(data, team) {
+  #given a subset data of allNBA, return the score in a game
+  return (sum(data$Points.Scored[data$Team == team]))
+}
+
+
 aggrBasic = function(dataframe, outputData) {
   #given a df we'll do a simple aggr
   #modifies the given outputData
