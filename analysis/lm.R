@@ -9,6 +9,7 @@ simpleAggr$Team1 = as.character(simpleAggr$Team1)
 simpleAggr$Team2 = as.character(simpleAggr$Team2)
 
 feature_vectors = simpleAggr #we'll be apending to this, so we'll make a copy
+
 feature_vectors$Team1_win_last_6 = NA
 feature_vectors$Team2_win_last_6 = NA
 
@@ -17,6 +18,27 @@ feature_vectors$Team2_away_win_percentage_10 = NA
 
 feature_vectors$Team1_avg_pnt_top_3_players_6 = NA
 feature_vectors$Team2_avg_pnt_top_3_players_6 = NA
+
+days_win_percentage = function(data, team, away=FALSE) {
+  #calculates the win percentage of a team over the last few days
+  game_days = unique(data$Date)
+  wins = 0
+  for (day in game_days) {
+    day_game_data = data[data$Date == day,]
+    if (day_game_data$Team1[1] == team) { #first team
+      if (score(day_game_data, team) > score(day_game_data, day_game_data$Team2[1])) {
+        wins = wins + 1
+      }
+    } else if (day_game_data$Team2[1] == team) { #second team
+      if (score(day_game_data, team) > score(day_game_data, day_game_data$Team1[1])) {
+        wins = wins + 1
+      }
+    } else {
+      print ("Unknown Game in days_win_percentage()")
+    }
+  }
+  return (wins/length(game_days))
+}
 
 last_days_games = function(data, days, team, game_date) {
   #Given x and data, it'll return data from up to x days ago, regardless of data.
@@ -31,29 +53,42 @@ last_days_games = function(data, days, team, game_date) {
 }
 
 for (simple_index in 1:nrow(simpleAggr)){
-  #first, get data from last x games. @TODO make sure enough data.
+  team1 = simpleAggr[simple_index,]$Team1
+  team2 = simpleAggr[simple_index,]$Team1
+  
   team1_sub_hist = last_days_games(allNBA,
-                                100,
-                                simpleAggr[simple_index,]$Team1,
+                                70,
+                                team1,
                                 simpleAggr[simple_index,]$Date)
   team2_sub_hist = last_days_games(allNBA,
-                                200,
-                                simpleAggr[simple_index,]$Team2,
+                                70,
+                                team2,
                                 simpleAggr[simple_index,]$Date)
   
   #CANT GET DATA FROM BOTH TEAM -____- Gotta manually attach it.
+  
+  team = days_win_percentage(team1_sub_hist, team1)
+  days_win_percentage = days_win_percentage(team2_sub_hist, team2)
+  
+  days_win_percentage(team1_sub_hist, 'Utah'
+                      )
   team1_custom_consolidated = NA
-    #getPerGameData(team1_sub_hist, lm_generic_template, lm_feature_aggr, lookback=1) #6? hmm
+   
   team2_custom_consolidated = NA
-    #getPerGameData(team2_sub_hist, lm_generic_template, lm_feature_aggr, lookback=1) #6? hmm
   #feature_vectors = 
-  #simpleAggr = getPerGameData(allNBA, template, aggrBasic)
+  
   print (head(team1_sub_hist))
   print (head(team2_sub_hist))
   break
 }
-
-
+"
+feature_vectors$Team1_win_last_6 = NA
+feature_vectors$Team2_win_last_6 = NA
+feature_vectors$Team1_away_win_percentage_10 = NA
+feature_vectors$Team2_away_win_percentage_10 = NA
+feature_vectors$Team1_avg_pnt_top_3_players_6 = NA
+feature_vectors$Team2_avg_pnt_top_3_players_6 = NA
+"
 #Do this after
 #flip = runif(nrow(feature_vectors))
 #train = feature_vectors[flip > .85,]
