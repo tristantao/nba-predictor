@@ -19,9 +19,11 @@ feature_vectors$Team2_away_win_percentage_10 = NA
 feature_vectors$Team1_avg_pnt_top_3_players_6 = NA
 feature_vectors$Team2_avg_pnt_top_3_players_6 = NA
 
-days_win_percentage = function(data, team, days=-1, away=FALSE) {
-  #calculates the win percentage of a team over the last few days
-  if (away) { data = data[data$Team2==team,] } #only calculate away data
+subset_by_trailing = function(data, days) {
+  "
+  given a dataset, only returns the data that occured within the last days.
+  @expects a $Date column
+  "
   if (days > 0) {
     most_recent_date = max(data$Date)
     print (most_recent_date)
@@ -29,6 +31,13 @@ days_win_percentage = function(data, team, days=-1, away=FALSE) {
     data = data[(data$Date + days) > most_recent_date,] #get the dates up to last days, no bound on future
     print (dim(data))
   }
+  return (data)
+}
+
+days_win_percentage = function(data, team, days=-1, away=FALSE) {
+  #calculates the win percentage of a team over the last few days
+  if (away) { data = data[data$Team2==team,] } #only calculate away data
+  data = subset_by_trailing(data, days)
   game_days = unique(data$Date)
 
   wins = 0
@@ -43,6 +52,27 @@ days_win_percentage = function(data, team, days=-1, away=FALSE) {
     }
   }
   return (wins/length(game_days))
+}
+
+top_x_players = function(data, team, top_x, stats=c('Points.Scored') ,days=-1) {
+  # Returns the stats from the top x players from the specified team
+  # players are ranked by the points scored.
+  data = subset_by_trailing(data, days)
+  game_days = unique(data$Date)
+  total_games = length(game_days)
+  
+  cum_sum_stats = unlist(lapply(stats, function(x){0})) #weird way to keep a running average
+
+  for (day in game_days) {
+    day_game_data = data[data$Date == day & data$Team == team,] #single game data for the team
+    sorted_player_stat = day_game_data[with(sub_table, order(Points.Scored, decreasing=TRUE)), ]
+    for (index in 1:length(stats)) {
+      stats_name = stats[index]
+      cum_sum_stats[index] = cum_sum_stats[index] + sum(sorted_player_stat$stat_name[1:top_x])
+    }
+    cum_sum_stats = cum_sum_stats/top_x 
+    return (cum_sum_stats)
+  }
 }
 
 last_days_games = function(data, days, team, game_date) {
@@ -60,20 +90,20 @@ last_days_games = function(data, days, team, game_date) {
 }
 
 for (simple_index in 1:nrow(simpleAggr)){
+  simple_index = 1000
   team1 = simpleAggr[simple_index,]$Team1
-  team2 = simpleAggr[simple_index,]$Team1
+  team2 = simpleAggr[simple_index,]$Team2
+  game_date = simpleAggr[simple_index,]$Date
   
   team1_sub_hist = last_days_games(allNBA,
-                                20,
+                                70,
                                 team1,
-                                simpleAggr[100,]$Date)
-  unique(team1_sub_hist$Date)
+                                game_date)
   team2_sub_hist = last_days_games(allNBA,
                                 70,
                                 team2,
-                                simpleAggr[simple_index,]$Date)
-  
-  #CANT GET DATA FROM BOTH TEAM -____- Gotta manually attach it.
+                                game_date)
+
   #CURRENT ONLY 10 WEEKS
   team1_percentage = days_win_percentage(team1_sub_hist, team1, days=70)
   team2_percentage = days_win_percentage(team2_sub_hist, team2, days=70)
@@ -88,8 +118,8 @@ for (simple_index in 1:nrow(simpleAggr)){
                            Team2_Score = sum(dataframe$Points.Scored[dataframe$Team2 == dataframe$Team]),
                            feature_vectors$Team1_win_last_6 = team1_percentage,
                            feature_vectors$Team2_win_last_6 = team2_percentage,
-                           feature_vectors$Team1_away_win_percentage_10 = NA,
-                           feature_vectors$Team2_away_win_percentage_10 = NA,
+                           feature_vectors$Team1_away_win_percentage_10 = team1_away_percentage,
+                           feature_vectors$Team2_away_win_percentage_10 = team2_away_percentage,
                            feature_vectors$Team1_avg_pnt_top_3_players_6 = NA,
                            feature_vectors$Team2_avg_pnt_top_3_players_6 = NA
   )
