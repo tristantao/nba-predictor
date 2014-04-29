@@ -1,3 +1,4 @@
+
 simple_aggr_template = data.frame(Team1 = character(),
                                   Team2 = character(),
                                   Date = as.Date(character()),
@@ -137,10 +138,12 @@ last_days_games = function(data, days, team, game_date) {
   return (sub_table)
 }
 
-get_feature_vectors = function(simpleAggr, feature_vectors, score_look_back=c(70,70,70,-1)) {
+get_feature_vectors = function(simpleAggr, feature_vectors, score_look_back=c(30,70,70,-1)) {
   print ("Generating Features")
-  ptm <- proc.time()
   for (simple_index in 1:nrow(simpleAggr)){
+    if (simple_index %% 100 == 0) {
+      print (paste("Processed", simple_index, "rows"))
+    }
     team1 = simpleAggr[simple_index,]$Team1
     team2 = simpleAggr[simple_index,]$Team2
     game_date = simpleAggr[simple_index,]$Date
@@ -154,7 +157,7 @@ get_feature_vectors = function(simpleAggr, feature_vectors, score_look_back=c(70
                                      game_date)
     team1_percentage = days_win_percentage(team1_sub_hist, team1, days=score_look_back[2])
     team2_percentage = days_win_percentage(team2_sub_hist, team2, days=score_look_back[2])
-    
+
     team1_away_percentage = days_win_percentage(team1_sub_hist, team1, days=score_look_back[3], away=TRUE)
     team2_away_percentage = days_win_percentage(team2_sub_hist, team2, days=score_look_back[3], away=TRUE)
     
@@ -169,6 +172,5 @@ get_feature_vectors = function(simpleAggr, feature_vectors, score_look_back=c(70
     feature_vectors$Team1_avg_pnt_top_3_players_6[simple_index] = team1_top_players_stats
     feature_vectors$Team2_avg_pnt_top_3_players_6[simple_index] = team2_top_players_stats
   }
-  proc.time() - ptm
   return (feature_vectors)
 }
