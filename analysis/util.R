@@ -136,3 +136,39 @@ last_days_games = function(data, days, team, game_date) {
   sub_table = sub_table[with(sub_table, order(Date, decreasing=TRUE)), ]
   return (sub_table)
 }
+
+get_feature_vectors = function(simpleAggr, feature_vectors, score_look_back=c(70,70,70,-1)) {
+  print ("Generating Features")
+  ptm <- proc.time()
+  for (simple_index in 1:nrow(simpleAggr)){
+    team1 = simpleAggr[simple_index,]$Team1
+    team2 = simpleAggr[simple_index,]$Team2
+    game_date = simpleAggr[simple_index,]$Date
+    team1_sub_hist = last_days_games(allNBA,
+                                     score_look_back[1],
+                                     team1,
+                                     game_date)
+    team2_sub_hist = last_days_games(allNBA,
+                                     score_look_back[1],
+                                     team2,
+                                     game_date)
+    team1_percentage = days_win_percentage(team1_sub_hist, team1, days=score_look_back[2])
+    team2_percentage = days_win_percentage(team2_sub_hist, team2, days=score_look_back[2])
+    
+    team1_away_percentage = days_win_percentage(team1_sub_hist, team1, days=score_look_back[3], away=TRUE)
+    team2_away_percentage = days_win_percentage(team2_sub_hist, team2, days=score_look_back[3], away=TRUE)
+    
+    team1_top_players_stats = top_x_players_stats(team1_sub_hist, team1, top_x=3, stats=c('Points.Scored'),
+                                                  days=score_look_back[4])
+    team2_top_players_stats = top_x_players_stats(team2_sub_hist, team2, top_x=3, stats=c('Points.Scored'),
+                                                  days=score_look_back[4])
+    feature_vectors$Team1_win_last_6[simple_index] = team1_percentage
+    feature_vectors$Team2_win_last_6[simple_index] = team2_percentage
+    feature_vectors$Team1_away_win_percentage_10[simple_index] = team1_away_percentage
+    feature_vectors$Team2_away_win_percentage_10[simple_index] = team2_away_percentage
+    feature_vectors$Team1_avg_pnt_top_3_players_6[simple_index] = team1_top_players_stats
+    feature_vectors$Team2_avg_pnt_top_3_players_6[simple_index] = team2_top_players_stats
+  }
+  proc.time() - ptm
+  return (feature_vectors)
+}
