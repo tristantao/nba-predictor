@@ -1,5 +1,5 @@
 setwd('/Users/t-rex-Box/Desktop/work/nba-predictor/')
-source('analysis/yhatConfig.R')
+source('analysis/yhatConfig.R') ####This needs to be configured by the user
 ###############
 ###LM #########
 ###############
