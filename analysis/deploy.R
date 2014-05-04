@@ -1,0 +1,65 @@
+setwd('/Users/t-rex-Box/Desktop/work/nba-predictor/')
+
+library(yhatr)
+#install.packages("jsonlite")
+library("jsonlite")
+yhat.config  <- c(
+  username="tao.tristan@gmail.com",
+  apikey="36e6c83686dd9a7bae454c8800fe0103",
+  env="http://sandbox.yhathq.com/"
+)
+###############
+###LM #########
+###############
+#source('analysis/lm.R')
+model.require <- function() {
+}
+model.transform  <- function(df) {
+  df$Team1_win_last_6 = as.numeric(df$Team1_win_last_6)
+  df$Team2_win_last_6 = as.numeric(df$Team2_win_last_6)
+  df$Team1_away_win_percentage_10 = as.numeric(df$Team1_away_win_percentage_10)
+  df$Team2_away_win_percentage_10 = as.numeric(df$Team2_away_win_percentage_10)
+  df$Team1_avg_pnt_top_3_players_6 = as.numeric(df$Team1_avg_pnt_top_3_players_6)
+  df$Team2_avg_pnt_top_3_players_6 = as.numeric(df$Team2_avg_pnt_top_3_players_6)
+  df
+}
+model.predict <- function(df) {
+  p.hats = predict(train.glm, newdata=df)
+  return (data.frame("result"=p.hats))
+}
+
+yhat.deploy ("nbaGLM")
+
+yhat.predict(model_name="nbaGLM", test[1,])
+
+
+
+predict.glm(train.glm, newdata = test, type = "response")
+
+
+
+############
+#####SVM####
+############
+#source('svm.R')
+model.require <- function() {
+  library(e1071)
+}
+model.transform  <- function(df) {
+  df$Team1_win_last_6 = as.numeric(df$Team1_win_last_6)
+  df$Team2_win_last_6 = as.numeric(df$Team2_win_last_6)
+  df$Team1_away_win_percentage_10 = as.numeric(df$Team1_away_win_percentage_10)
+  df$Team2_away_win_percentage_10 = as.numeric(df$Team2_away_win_percentage_10)
+  df$Team1_avg_pnt_top_3_players_6 = as.numeric(df$Team1_avg_pnt_top_3_players_6)
+  df$Team2_avg_pnt_top_3_players_6 = as.numeric(df$Team2_avg_pnt_top_3_players_6)
+  df
+}
+model.predict <- function(df) {
+  p.hats = predict(train.svm.2, newdata=df)
+  return (data.frame("result"=p.hats))
+}
+yhat.deploy ("nbaSVM")
+
+yhat.svm.result = yhat.predict(model_name="nbaSVM", test)
+mean (yhat.svm.result == test$Result, na.rm=TRUE)
+
