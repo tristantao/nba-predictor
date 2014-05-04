@@ -26,7 +26,11 @@ proc.time() - ptm
 feature_vectors$ScoreDiff = feature_vectors$Team1_Score - feature_vectors$Team2_Score
 feature_vectors$Result = feature_vectors$ScoreDiff > 0
 
+for (int_vector in names(feature_vectors)[-(c(1,2,3))]) {
+  feature_vectors[[int_vector]] = as.numeric(feature_vectors[[int_vector]], na.rm=TRUE)
+}
 flip = runif(nrow(feature_vectors))
 train = feature_vectors[flip <= .85,]
 test = feature_vectors[flip > .85,]
+
 

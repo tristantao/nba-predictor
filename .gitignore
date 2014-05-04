@@ -1,2 +1,7 @@
 *.pyc
 .DS_STORE
+
+.RData
+.Rhistory
+
+analysis/yhatConfig.R
