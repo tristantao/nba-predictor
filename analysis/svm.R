@@ -25,7 +25,7 @@ mean ((converted_p.hats > 0) == test$Result, na.rm=TRUE)
 
 train.svm.2 <- svm(Result ~ Team1_win_last_6 + Team2_win_last_6 + Team1_away_win_percentage_10
                    + Team2_away_win_percentage_10 + Team1_avg_pnt_top_3_players_6 + Team2_avg_pnt_top_3_players_6,
-                   data = train, type="C-classification", cross=10)
+                   data = train, type="C-classification")
 
 summary(train.svm.2)
 
