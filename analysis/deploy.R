@@ -1,13 +1,5 @@
 setwd('/Users/t-rex-Box/Desktop/work/nba-predictor/')
-
-library(yhatr)
-#install.packages("jsonlite")
-library("jsonlite")
-yhat.config  <- c(
-  username="tao.tristan@gmail.com",
-  apikey="36e6c83686dd9a7bae454c8800fe0103",
-  env="http://sandbox.yhathq.com/"
-)
+source('analysis/yhatConfig.R')
 ###############
 ###LM #########
 ###############
