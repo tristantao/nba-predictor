@@ -50,6 +50,7 @@ yhat.deploy ("nbaSVM")
 
 yhat.svm.result = yhat.predict(model_name="nbaSVM", test)
 mean (yhat.svm.result == test$Result, na.rm=TRUE)
+yhat.svm.result
 
 
 ############
