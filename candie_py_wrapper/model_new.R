@@ -45,7 +45,7 @@ feature_vectors_template$Team2_avg_pnt_top_3_players_6 = NA
 test = get_feature_vectors(feature_vectors_template)
 
 if (model_option == 'lm') {
-  result = yhat.predict(model_name="nbaGLM", test[1,])
+  result = yhat.predict(model_name="nbaGLM", test)
 } else if(model_option == 'svm') {
   result = yhat.predict(model_name="nbaSVM", test)
 } else if(model_option == 'nb') {
@@ -56,6 +56,7 @@ if (model_option == 'lm') {
 }
 
 print (result)
+
 #load("mem_content.RData")
 #############
 #########
