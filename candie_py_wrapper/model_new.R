@@ -1,8 +1,9 @@
 library(yhatr)
+print (path.expand("~/nba-predictor/"))
 
-#print (path.expand("~/Desktop/work/nba-preditor/"))
+setwd (path.expand("~/nba-predictor/"))
 
-setwd('/Users/t-rex-Box/Desktop/work/nba-predictor/')
+#setwd('/Users/t-rex-Box/Desktop/work/nba-predictor/')
 source('analysis/util.R')
 
 args<-commandArgs(TRUE)
