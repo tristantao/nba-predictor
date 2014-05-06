@@ -24,7 +24,6 @@ yhat.deploy ("nbaGLM")
 
 yhat.predict(model_name="nbaGLM", test[1,])
 
-
 predict.glm(train.glm, newdata = test, type = "response")
 
 ############

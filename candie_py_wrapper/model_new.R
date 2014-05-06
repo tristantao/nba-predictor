@@ -1,9 +1,20 @@
+library(yhatr)
+
+setwd('/Users/t-rex-Box/Desktop/work/nba-predictor/')
 source('analysis/util.R')
 
-team1 = "Toronto"
-team2 = "New York"
-today = as.Date("2014-05-06")
-model_option = "lm"
+args<-commandArgs(TRUE)
+#USAGE Rscript model_new.R team1 team2 date model
+
+team1 = args[1]
+team2 = args[2]
+today = args[3]
+model_option = as.Date(args[4])
+
+print (team1)
+print (team2)
+print (today)
+print (model_option)
   
 allNBA <- read.csv("analysis/joined.csv", header = TRUE, stringsAsFactors = FALSE)
 allNBA$Date = as.Date(allNBA$Date, "%d-%m-%Y") #format: 17-04-2013
@@ -24,6 +35,16 @@ feature_vectors_template$Team2_avg_pnt_top_3_players_6 = NA
 
 temp = get_feature_vectors(feature_vectors_template)
 
+if (model_option == 'lm') {
+  result = yhat.predict(model_name="nbaGLM", test[1,])
+} else if(model_option == 'svm') {
+  result = yhat.predict(model_name="nbaSVM", test)
+} else if(model_option == 'nb') {
+  yhat.nb.result = yhat.predict(model_name="nbaNaiveBayes", nb_test)
+  result <- subset(yhat.nb.result, select = -c(1,length(yhat.nb.result)) )
+} else {
+  print ("Invalid Model Selection")
+}
 
 load("mem_content.RData")
 #############
