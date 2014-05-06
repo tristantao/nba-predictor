@@ -41,7 +41,7 @@ You can call it via terminal:
 ```bash
 python predict_game.py "New York" "Toronto" "2014-05-06" "lm"
 #param: team1 team2 date model_used
-#team1 is the expected home team).
+#team1 is the expected home team.
 ```
 You can also import _predict_game.py_ and call the predict\_game.run\_model(...) to use it to better interate.
 
