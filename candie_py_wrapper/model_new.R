@@ -46,6 +46,8 @@ test_vector = get_feature_vectors(feature_vectors_template)
 
 if (model_option == 'lm') {
   result = yhat.predict(model_name="nbaGLM", test_vector)
+  cat ("Points: ")
+  cat (result[[2]])
   if (result[[2]] > 0) {
     result = 1
   } else {
@@ -65,7 +67,7 @@ if (model_option == 'lm') {
 } else {
   print ("Invalid Model Selection")
 }
-
+cat ("\nreturning-result:\n")
 cat (result)
 
 #load("mem_content.RData")
