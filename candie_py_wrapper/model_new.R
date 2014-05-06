@@ -43,7 +43,7 @@ feature_vectors_template$Team2_away_win_percentage_10 = NA
 feature_vectors_template$Team1_avg_pnt_top_3_players_6 = NA
 feature_vectors_template$Team2_avg_pnt_top_3_players_6 = NA
 
-temp = get_feature_vectors(feature_vectors_template)
+test = get_feature_vectors(feature_vectors_template)
 
 if (model_option == 'lm') {
   result = yhat.predict(model_name="nbaGLM", test[1,])
@@ -56,7 +56,8 @@ if (model_option == 'lm') {
   print ("Invalid Model Selection")
 }
 
-load("mem_content.RData")
+print (result)
+#load("mem_content.RData")
 #############
 #########
 ################
