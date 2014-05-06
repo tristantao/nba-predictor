@@ -13,13 +13,11 @@ def run_model(team1, team2, date, model):
 	script_loc = os.path.join(os.getcwd(), "model_new.R")
 
 	command = "Rscript %s \"%s\" \"%s\" \"%s\" \"%s\"" % (script_loc, team1, team2, date, model)
-	print command
-
-	#print Popen("echo 1", shell=True, stdout=PIPE).stdout.read()
 
 	ret_vals = Popen(command, shell=True, stdout=PIPE).stdout.read().split()
-
 	print "ret Vals: " + str(ret_vals)
+	print "expected point spread: " +  ret_vals[-3]
+
 	if len(ret_vals) > 0:
 		result = ret_vals[-1]
 	else:
