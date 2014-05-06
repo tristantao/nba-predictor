@@ -107,7 +107,7 @@ top_x_players_stats = function(data, team, top_x, stats=c('Points.Scored') ,days
   data = subset_by_trailing(data, days)
   game_days = unique(data$Date)
   total_games = length(game_days)
-  
+
   cum_sum_stats = unlist(lapply(stats, function(x){0})) #weird way to keep a running average
   for (day in game_days) {
     day_game_data = data[data$Date == day & data$Team == team,] #single game data for the team
@@ -138,15 +138,15 @@ last_days_games = function(data, days, team, game_date) {
   return (sub_table)
 }
 
-get_feature_vectors = function(simpleAggr, feature_vectors, score_look_back=c(30,70,70,-1)) {
+get_feature_vectors = function(feature_vectors_template, score_look_back=c(60,70,70,-1)) {
   print ("Generating Features")
-  for (simple_index in 1:nrow(simpleAggr)){
+  for (simple_index in 1:nrow(feature_vectors_template)){
     if (simple_index %% 100 == 0) {
       print (paste("Processed", simple_index, "rows"))
     }
-    team1 = simpleAggr[simple_index,]$Team1
-    team2 = simpleAggr[simple_index,]$Team2
-    game_date = simpleAggr[simple_index,]$Date
+    team1 = feature_vectors_template[simple_index,]$Team1
+    team2 = feature_vectors_template[simple_index,]$Team2
+    game_date = feature_vectors_template[simple_index,]$Date
     team1_sub_hist = last_days_games(allNBA,
                                      score_look_back[1],
                                      team1,
@@ -165,12 +165,12 @@ get_feature_vectors = function(simpleAggr, feature_vectors, score_look_back=c(30
                                                   days=score_look_back[4])
     team2_top_players_stats = top_x_players_stats(team2_sub_hist, team2, top_x=3, stats=c('Points.Scored'),
                                                   days=score_look_back[4])
-    feature_vectors$Team1_win_last_6[simple_index] = team1_percentage
-    feature_vectors$Team2_win_last_6[simple_index] = team2_percentage
-    feature_vectors$Team1_away_win_percentage_10[simple_index] = team1_away_percentage
-    feature_vectors$Team2_away_win_percentage_10[simple_index] = team2_away_percentage
-    feature_vectors$Team1_avg_pnt_top_3_players_6[simple_index] = team1_top_players_stats
-    feature_vectors$Team2_avg_pnt_top_3_players_6[simple_index] = team2_top_players_stats
+    feature_vectors_template$Team1_win_last_6[simple_index] = team1_percentage
+    feature_vectors_template$Team2_win_last_6[simple_index] = team2_percentage
+    feature_vectors_template$Team1_away_win_percentage_10[simple_index] = team1_away_percentage
+    feature_vectors_template$Team2_away_win_percentage_10[simple_index] = team2_away_percentage
+    feature_vectors_template$Team1_avg_pnt_top_3_players_6[simple_index] = team1_top_players_stats
+    feature_vectors_template$Team2_avg_pnt_top_3_players_6[simple_index] = team2_top_players_stats
   }
-  return (feature_vectors)
+  return (feature_vectors_template)
 }

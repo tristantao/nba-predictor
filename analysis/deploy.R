@@ -24,8 +24,6 @@ yhat.deploy ("nbaGLM")
 
 yhat.predict(model_name="nbaGLM", test[1,])
 
-
-
 predict.glm(train.glm, newdata = test, type = "response")
 
 ############
@@ -52,6 +50,7 @@ yhat.deploy ("nbaSVM")
 
 yhat.svm.result = yhat.predict(model_name="nbaSVM", test)
 mean (yhat.svm.result == test$Result, na.rm=TRUE)
+yhat.svm.result
 
 
 ############

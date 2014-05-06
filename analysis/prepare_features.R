@@ -8,19 +8,19 @@ simpleAggr = getPerGameData(allNBA, simple_aggr_template, aggrBasic)
 simpleAggr$Team1 = as.character(simpleAggr$Team1)
 simpleAggr$Team2 = as.character(simpleAggr$Team2)
 
-feature_vectors = simpleAggr #we'll be apending to this, so we'll make a copy
+feature_vectors_template = simpleAggr #we'll be apending to this, so we'll make a copy
 
-feature_vectors$Team1_win_last_6 = NA
-feature_vectors$Team2_win_last_6 = NA
+feature_vectors_template$Team1_win_last_6 = NA
+feature_vectors_template$Team2_win_last_6 = NA
 
-feature_vectors$Team1_away_win_percentage_10 = NA
-feature_vectors$Team2_away_win_percentage_10 = NA
+feature_vectors_template$Team1_away_win_percentage_10 = NA
+feature_vectors_template$Team2_away_win_percentage_10 = NA
 
-feature_vectors$Team1_avg_pnt_top_3_players_6 = NA
-feature_vectors$Team2_avg_pnt_top_3_players_6 = NA
+feature_vectors_template$Team1_avg_pnt_top_3_players_6 = NA
+feature_vectors_template$Team2_avg_pnt_top_3_players_6 = NA
 
 ptm <- proc.time()
-feature_vectors = get_feature_vectors(simpleAggr, feature_vectors)
+feature_vectors = get_feature_vectors(feature_vectors_template)
 proc.time() - ptm
 
 feature_vectors$ScoreDiff = feature_vectors$Team1_Score - feature_vectors$Team2_Score
