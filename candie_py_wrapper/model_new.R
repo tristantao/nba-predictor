@@ -6,6 +6,13 @@ setwd (path.expand("~/nba-predictor/"))
 #setwd('/Users/t-rex-Box/Desktop/work/nba-predictor/')
 source('analysis/util.R')
 
+############
+## TO DO  ##
+############
+source('analysis/yhatConfig.R') #This must be set with your own credential
+############################
+############################
+
 args<-commandArgs(TRUE)
 #USAGE Rscript model_new.R team1 team2 date model
 
