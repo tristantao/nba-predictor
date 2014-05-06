@@ -1,5 +1,7 @@
 library(yhatr)
 
+#print (path.expand("~/Desktop/work/nba-preditor/"))
+
 setwd('/Users/t-rex-Box/Desktop/work/nba-predictor/')
 source('analysis/util.R')
 
@@ -8,8 +10,8 @@ args<-commandArgs(TRUE)
 
 team1 = args[1]
 team2 = args[2]
-today = args[3]
-model_option = as.Date(args[4])
+today = as.Date(args[3])
+model_option = args[4]
 
 print (team1)
 print (team2)
