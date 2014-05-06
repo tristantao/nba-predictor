@@ -21,10 +21,10 @@ team2 = args[2]
 today = as.Date(args[3])
 model_option = args[4]
 
-print (team1)
-print (team2)
-print (today)
-print (model_option)
+#print (team1)
+#print (team2)
+#print (today)
+#print (model_option)
   
 allNBA <- read.csv("analysis/joined.csv", header = TRUE, stringsAsFactors = FALSE)
 allNBA$Date = as.Date(allNBA$Date, "%d-%m-%Y") #format: 17-04-2013
@@ -43,20 +43,32 @@ feature_vectors_template$Team2_away_win_percentage_10 = NA
 feature_vectors_template$Team1_avg_pnt_top_3_players_6 = NA
 feature_vectors_template$Team2_avg_pnt_top_3_players_6 = NA
 
-test = get_feature_vectors(feature_vectors_template)
+test_vector = get_feature_vectors(feature_vectors_template)
 
 if (model_option == 'lm') {
-  result = yhat.predict(model_name="nbaGLM", test[1,])
+  result = yhat.predict(model_name="nbaGLM", test_vector)
+  if (result[[2]] > 0) {
+    result = 1
+  } else {
+    result = 0
+  }
 } else if(model_option == 'svm') {
-  result = yhat.predict(model_name="nbaSVM", test)
-} else if(model_option == 'nb') {
-  yhat.nb.result = yhat.predict(model_name="nbaNaiveBayes", nb_test)
-  result <- subset(yhat.nb.result, select = -c(1,length(yhat.nb.result)) )
+  result = yhat.predict(model_name="nbaSVM", test_vector)
+} else if(model_option == 'nb') { #rounding helps a bit
+  test_vector$Team1_win_last_6 = round(test_vector$Team1_win_last_6, 1)
+  test_vector$Team2_win_last_6 = round(test_vector$Team2_win_last_6, 1)
+  test_vector$Team1_away_win_percentage_10 = round(test_vector$Team1_away_win_percentage_10, 1)
+  test_vector$Team2_away_win_percentage_10 = round(test_vector$Team2_away_win_percentage_10, 1)
+  test_vector$Team1_avg_pnt_top_3_players_6 = round(test_vector$Team1_avg_pnt_top_3_players_6, 2)
+  test_vector$Team2_avg_pnt_top_3_players_6 = round(test_vector$Team2_avg_pnt_top_3_players_6, 2)
+  yhat.nb.result = yhat.predict(model_name="nbaNaiveBayes", test_vector)
+  result <- subset(yhat.nb.result, select = -c(1,length(yhat.nb.result)))
 } else {
   print ("Invalid Model Selection")
 }
 
-print (result)
+cat (result)
+
 #load("mem_content.RData")
 #############
 #########
