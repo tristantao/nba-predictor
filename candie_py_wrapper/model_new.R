@@ -24,15 +24,13 @@ model_option = args[4]
 #print (team2)
 #print (today)
 #print (model_option)
-  
+
 allNBA <- read.csv("analysis/joined.csv", header = TRUE, stringsAsFactors = FALSE)
 allNBA$Date = as.Date(allNBA$Date, "%d-%m-%Y") #format: 17-04-2013
 
 simpleAggrNewSkeleton = data.frame(Team1 = team1,
                                   Team2 = team2,
-                                  Date = today,
-                                  Team1_Score = 0,
-                                  Team2_Score = 0)
+                                  Date = today)
 
 #simpleAggrNewSkeleton = data.frame(Team1 = 'LA Clippers',
 #                                   Team2 = 'LA Lakers',
@@ -50,7 +48,7 @@ feature_vectors_template$Team1_avg_pnt_top_3_players_6 = NA
 feature_vectors_template$Team2_avg_pnt_top_3_players_6 = NA
 
 test_vector = get_feature_vectors(feature_vectors_template)
-
+print (test_vector)
 if (model_option == 'lm') {
   result = yhat.predict(model_name="nbaGLM", test_vector)
   cat ("Points: ")
@@ -62,7 +60,7 @@ if (model_option == 'lm') {
   }
 } else if(model_option == 'svm') {
   result = yhat.predict(model_name="nbaSVM", test_vector)
-  result = as.numeric(result[[2]])
+  result = as.character(result[[2]])
 } else if(model_option == 'nb') { #rounding helps a bit
   test_vector$Team1_win_last_6 = round(test_vector$Team1_win_last_6, 1)
   test_vector$Team2_win_last_6 = round(test_vector$Team2_win_last_6, 1)
@@ -71,7 +69,7 @@ if (model_option == 'lm') {
   test_vector$Team1_avg_pnt_top_3_players_6 = round(test_vector$Team1_avg_pnt_top_3_players_6, 2)
   test_vector$Team2_avg_pnt_top_3_players_6 = round(test_vector$Team2_avg_pnt_top_3_players_6, 2)
   yhat.nb.result = yhat.predict(model_name="nbaNaiveBayes", test_vector)
-  result = as.numeric(yhat.nb.result[[2]])
+  result = as.character(yhat.nb.result[[2]])
 } else {
   print ("Invalid Model Selection")
 }
