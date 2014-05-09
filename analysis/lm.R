@@ -9,6 +9,7 @@ train.glm <- glm(ScoreDiff ~ Team1_win_last_6 + Team2_win_last_6 + Team1_away_wi
 summary(train.glm)
 
 p.hats <- predict.glm(train.glm, newdata = test, type = "response")
+as.numeric(p.hats > 0)
 
 mean ((p.hats > 0) == test$Result, na.rm=TRUE)
 

@@ -17,6 +17,7 @@ summary(train.svm.1)
 
 p.hats.1 = predict(train.svm.1, newdata=test)
 converted_p.hats = as.numeric(levels(p.hats.1)[p.hats.1])
+as.numeric(converted_p.hats > 0)
 mean ((converted_p.hats > 0) == test$Result, na.rm=TRUE)
 
 ########################
