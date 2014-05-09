@@ -86,7 +86,7 @@ days_win_percentage = function(data, team, days=-1, away=FALSE) {
   if (away) { data = data[data$Team2==team,] } #only calculate away data
   data = subset_by_trailing(data, days)
   game_days = unique(data$Date)
-  
+
   wins = 0
   for (day in game_days) {
     day_game_data = data[data$Date == day,]

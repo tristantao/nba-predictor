@@ -24,7 +24,7 @@ yhat.deploy ("nbaGLM")
 
 yhat.predict(model_name="nbaGLM", test[1,])
 
-predict.glm(train.glm, newdata = test, type = "response")
+predict.glm(train.glm, newdata = test[1,], type = "response")
 
 ############
 #####SVM####
@@ -43,12 +43,13 @@ model.transform  <- function(df) {
   df
 }
 model.predict <- function(df) {
-  p.hats = predict(train.svm.2, newdata=df)
+  p.hats = predict(train.svm.1, newdata=df)
   return (data.frame("result"=p.hats))
 }
 yhat.deploy ("nbaSVM")
 
 yhat.svm.result = yhat.predict(model_name="nbaSVM", test)
+yhat.svm.result
 mean (yhat.svm.result == test$Result, na.rm=TRUE)
 yhat.svm.result
 
@@ -74,7 +75,7 @@ model.predict <- function(df) {
   return (data.frame("result"=p.hats))
 }
 yhat.deploy ("nbaNaiveBayes")
-
-yhat.nb.result = yhat.predict(model_name="nbaNaiveBayes", nb_test)
+nb_test = test #shouldn't be
+yhat.nb.result = yhat.predict(model_name="nbaNaiveBayes", nb_test[18,])
 yhat.nb.result.cleaned <- subset(yhat.nb.result, select = -c(1,length(yhat.nb.result)) )
 mean (unlist(yhat.nb.result.cleaned) == nb_test$Result, na.rm=TRUE)
