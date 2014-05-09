@@ -43,7 +43,7 @@ model.transform  <- function(df) {
   df
 }
 model.predict <- function(df) {
-  p.hats = predict(train.svm.2, newdata=df)
+  p.hats = predict(train.svm.1, newdata=df)
   return (data.frame("result"=p.hats))
 }
 yhat.deploy ("nbaSVM")
