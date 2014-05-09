@@ -71,7 +71,7 @@ if (model_option == 'lm') {
   test_vector$Team1_avg_pnt_top_3_players_6 = round(test_vector$Team1_avg_pnt_top_3_players_6, 2)
   test_vector$Team2_avg_pnt_top_3_players_6 = round(test_vector$Team2_avg_pnt_top_3_players_6, 2)
   yhat.nb.result = yhat.predict(model_name="nbaNaiveBayes", test_vector)
-  result = as.numeric(result[[2]])
+  result = as.numeric(yhat.nb.result[[2]])
 } else {
   print ("Invalid Model Selection")
 }
