@@ -34,6 +34,13 @@ simpleAggrNewSkeleton = data.frame(Team1 = team1,
                                   Team1_Score = 0,
                                   Team2_Score = 0)
 
+#simpleAggrNewSkeleton = data.frame(Team1 = 'LA Clippers',
+#                                   Team2 = 'LA Lakers',
+#                                   Date = as.Date("2014-05-06"),
+#                                   Team1_Score = 0,
+#                                   Team2_Score = 0)
+
+
 feature_vectors_template = simpleAggrNewSkeleton #we'll be apending to this, so we'll make a copy
 feature_vectors_template$Team1_win_last_6 = NA
 feature_vectors_template$Team2_win_last_6 = NA
@@ -55,6 +62,7 @@ if (model_option == 'lm') {
   }
 } else if(model_option == 'svm') {
   result = yhat.predict(model_name="nbaSVM", test_vector)
+  result = as.numeric(result[[2]])
 } else if(model_option == 'nb') { #rounding helps a bit
   test_vector$Team1_win_last_6 = round(test_vector$Team1_win_last_6, 1)
   test_vector$Team2_win_last_6 = round(test_vector$Team2_win_last_6, 1)
@@ -63,7 +71,7 @@ if (model_option == 'lm') {
   test_vector$Team1_avg_pnt_top_3_players_6 = round(test_vector$Team1_avg_pnt_top_3_players_6, 2)
   test_vector$Team2_avg_pnt_top_3_players_6 = round(test_vector$Team2_avg_pnt_top_3_players_6, 2)
   yhat.nb.result = yhat.predict(model_name="nbaNaiveBayes", test_vector)
-  result <- subset(yhat.nb.result, select = -c(1,length(yhat.nb.result)))
+  result = as.numeric(result[[2]])
 } else {
   print ("Invalid Model Selection")
 }
