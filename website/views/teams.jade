@@ -1,0 +1,18 @@
+extends layout
+
+block content
+
+  include inc/nav
+  .container-fluid
+    .row
+      include inc/sidebar
+      .col-sm-9.col-sm-offset-3.col-md-10.col-md-offset-2.main
+        h1.page-header Active NBA Teams 
+        .row.placeholders
+          each team in teams
+            .col-xs-6.col-sm-3.placeholder
+              img.img-responsive(src='/b/images/'+team.logo, alt=team.team_name+" Logo")
+              h4=team.team_city + " " + team.team_name
+              span.text-muted=team.division
+          
+  include inc/foot

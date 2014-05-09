@@ -1,0 +1,88 @@
+extends layout
+
+mixin homeLabel(result)
+  if result == undefined
+    h3
+  else if result == 0
+    h3.text-danger Loser
+  else if result == 1
+    h3.text-success Winner
+  else
+    h3.text-warning Error
+
+mixin awayLabel(result)
+  if result == undefined
+    h3
+  else if result == 0
+    h3.text-success Winner
+  else if result == 1
+    h3.text-danger Loser
+  else
+    h3.text-warning Error
+
+block content
+
+  include inc/nav
+  .container-fluid
+    .row
+      include inc/sidebar
+      .col-sm-9.col-sm-offset-3.col-md-10.col-md-offset-2.main
+        h1.page-header NBA Prediction Engine
+        .row.placeholders
+          form(action="/model" method="get")
+            .col-md-5
+              h3 Home
+              img#team1Img(src="/b/images/placeholder.png")
+              h3
+                select.form-control#team1Select(name="team1")
+                  option(value="" disabled selected) Pick a Team
+                  each team in teams
+                    option(data-logo=team.logo value=team.team_city)=team.team_city + " " + team.team_name
+              mixin homeLabel(prediction)
+            .col-md-2
+              h3 VS
+              h3
+                select.form-control#modelSelect(name="model")
+                  option(value="lm") Linear Model
+                  option(value="nb" disabled) Naive Bayes
+                  option(value="svm" disabled) Support Vector Machine
+              button.btn.btn-primary.btn-lg(type="submit") Predict
+            .col-md-5
+              h3 Away
+              img#team2Img(src="/b/images/placeholder.png")
+              h3
+                select.form-control#team2Select(name="team2")
+                  option(value="" disabled selected) Pick a Team
+                  each team in teams
+                    option(data-logo=team.logo value=team.team_city)=team.team_city + " " + team.team_name
+              mixin awayLabel(prediction)
+            
+  include inc/foot
+  script(type="text/javascript").
+    $('#team1Select').change(function(e){
+      console.log($( "#team1Select option:selected" ).text());
+      var logoPath = "/b/images/"+$( "#team1Select option:selected" ).data('logo');
+      $('#team1Img').attr('src',logoPath);
+    });
+
+
+    $('#team2Select').change(function(e){
+      console.log($( "#team2Select option:selected" ).text());
+      var logoPath = "/b/images/"+$( "#team2Select option:selected" ).data('logo');
+      $('#team2Img').attr('src',logoPath);
+    });
+    $(document).ready(function(){
+      if("!{model}" != ""){
+        $("#modelSelect").val("!{model}");
+      }
+      if("!{team1}" != ""){
+        $("#team1Select").val("!{team1}");
+        var logoPath = "/b/images/"+$( "#team1Select option:selected" ).data('logo');
+        $('#team1Img').attr('src',logoPath);
+      }
+      if("!{team2}" != ""){
+        $("#team2Select").val("!{team2}");
+        var logoPath = "/b/images/"+$( "#team2Select option:selected" ).data('logo');
+        $('#team2Img').attr('src',logoPath);
+      }
+    });

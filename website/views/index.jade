@@ -1,0 +1,55 @@
+extends layout
+
+block content
+
+  include inc/nav
+  .container-fluid
+    .row
+      include inc/sidebar
+      .col-sm-9.col-sm-offset-3.col-md-10.col-md-offset-2.main
+        h1.page-header Dashboard
+        .row.placeholders
+          .col-xs-6.col-sm-3.placeholder
+            img.img-responsive(src='/b/images/76ers_logo.gif', alt='Generic placeholder thumbnail')
+            h4 Label
+            span.text-muted Something else
+          .col-xs-6.col-sm-3.placeholder
+            img.img-responsive(src='/b/images/knicks_logo.gif', alt='Generic placeholder thumbnail')
+            h4 Label
+            span.text-muted Something else
+          .col-xs-6.col-sm-3.placeholder
+            img.img-responsive(src='/b/images/celtics_logo.gif', alt='Generic placeholder thumbnail')
+            h4 Label
+            span.text-muted Something else
+          .col-xs-6.col-sm-3.placeholder
+            img.img-responsive(src='/b/images/nets_logo.gif', alt='Generic placeholder thumbnail')
+            h4 Label
+            span.text-muted Something else
+        h2.sub-header Section title
+        .table-responsive
+          table.table.table-striped
+            thead
+              tr
+                th #
+                th Header
+                th Header
+                th Header
+                th Header
+            tbody
+              tr
+                td 1,001
+                td Lorem
+                td ipsum
+                td dolor
+                td sit
+              tr
+                td 1,002
+                td amet
+                td consectetur
+                td adipiscing
+                td elit
+
+  //- Place the scripts at the end
+  script(src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js")
+  script(src="/b/javascripts/bootstrap.min.js")  
+  //- script(src="/javascripts/docs.min.js")

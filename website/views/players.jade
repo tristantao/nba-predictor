@@ -1,0 +1,41 @@
+extends layout
+
+block content
+
+  include inc/nav
+  .container-fluid
+    .row
+      include inc/sidebar
+      .col-sm-9.col-sm-offset-3.col-md-10.col-md-offset-2.main(id="valueList")
+        h1.page-header Recent Games
+        input.search.form-control(placeholder="Search" style="max-width: 300px;")
+        .table-responsive
+
+          table.table.table-striped
+            thead
+              tr
+                th
+                th.sort(data-sort="name") Player Name
+                th.sort(data-sort="team") Team
+                th.sort(data-sort="points") PPG
+                th.sort(data-sort="rebounds") RPG
+                th.sort(data-sort="assists") APG
+            tbody.list
+              each player in players
+                tr
+                  td
+                    img(src="/b/images/"+player.logo)
+                  td.name= player.player_name
+                  td.team= player.team
+                  td.points= player.avg_points
+                  td.rebounds= player.avg_rebounds
+                  td.assists= player.avg_assists
+
+  include inc/foot
+  script(type="text/javascript").
+    var options = {
+      valueNames: [ 'name', 'team', 'points', 'rebounds','assists']
+    };
+
+    var hackerList = new List('valueList', options);
+    console.log(hackerList);
