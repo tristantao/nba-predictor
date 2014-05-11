@@ -23,7 +23,7 @@ nb_test$Team2_avg_pnt_top_3_players_6 = round(nb_test$Team2_avg_pnt_top_3_player
 
 train.nb.1 <- naiveBayes(Result ~ Team1_win_last_6 + Team2_win_last_6 + Team1_away_win_percentage_10
                    + Team2_away_win_percentage_10 + Team1_avg_pnt_top_3_players_6
-                   + Team2_avg_pnt_top_3_players_6, data = nb_test)
+                   + Team2_avg_pnt_top_3_players_6, data = nb_train)
 
 summary(train.nb.1)
 
