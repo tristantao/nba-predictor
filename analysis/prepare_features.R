@@ -10,6 +10,8 @@ simpleAggr$Team2 = as.character(simpleAggr$Team2)
 
 feature_vectors_template = simpleAggr #we'll be apending to this, so we'll make a copy
 
+#feature_vectors_template = ss
+
 feature_vectors_template$Team1_win_last_6 = NA
 feature_vectors_template$Team2_win_last_6 = NA
 
@@ -21,7 +23,7 @@ feature_vectors_template$Team2_avg_pnt_top_3_players_6 = NA
 
 ptm <- proc.time()
 feature_vectors = get_feature_vectors(feature_vectors_template)
-proc.time() - ptm
+print (proc.time() - ptm)
 
 feature_vectors$ScoreDiff = feature_vectors$Team1_Score - feature_vectors$Team2_Score
 feature_vectors$Result = feature_vectors$ScoreDiff > 0
