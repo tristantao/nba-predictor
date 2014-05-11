@@ -1,0 +1,192 @@
+extends layout
+
+block content
+
+  include inc/nav
+  .container-fluid
+    .row
+      include inc/sidebar
+      .col-sm-9.col-sm-offset-3.col-md-10.col-md-offset-2.main(id="valueList")
+        h1.page-header=player_name
+        .row
+          .col-md-4
+            img(src="/b/images/"+team_logo style="float:left")
+            div
+              strong Team: 
+              | #{team_city} #{team_name}
+            div
+              strong Division: 
+              | #{division}
+            div
+              strong Conference: 
+              | #{conference}
+          .col-md-8
+            div(id="viz1")
+        table.table.table-striped
+          thead
+            tr
+              th.sort(data-sort="game_date") Game Date
+              th.sort(data-sort="minutes") Minutes
+              th.sort(data-sort="points") Points
+              th.sort(data-sort="assists") Assists
+              th.sort(data-sort="rebounds") Rebounds
+              th.sort(data-sort="blocks") Blocks
+              th.sort(data-sort="steals") Steals
+              th.sort(data-sort="turnovers") Turnovers
+              th.sort(data-sort="fgm") FGM
+              th.sort(data-sort="fga") FGA
+              th.sort(data-sort="ftm") FTM
+              th.sort(data-sort="fta") FTA
+              th.sort(data-sort="fg3_made") 3PT Made
+              th.sort(data-sort="fg3_attempted") 3PT Attempted
+              th.sort(data-sort="personal_fouls") Fouls
+          tbody.list
+            each game in player_info
+              tr
+                td.game_date
+                  a(href="/b/games/"+game.game_id)= game.formattedGameDate
+                td.minutes= game.minutes_played
+                td.points= game.points
+                td.assists= game.assists
+                td.rebounds= game.total_rebounds
+                td.blocks= game.blocked_shots
+                td.steals= game.steals
+                td.turnovers=game.turnovers
+                td.fgm= game.fg_made
+                td.fga= game.fg_attempted
+                td.ftm= game.ft_made
+                td.fta= game.ft_attempted
+                td.fg3_made= game['3pt_made']
+                td.fg3_attempted= game['3pt_attempted']
+                td.personal_fouls=game.personal_fouls
+  include inc/foot
+
+  script(src="/b/javascripts/d3.min.js")  
+  //- script(type="text/javascript").    
+  //-   //Setup local variables.
+  //-   var w = 600;
+  //-   var h = 300;
+  //-   var barPadding = 20;
+  //-   var padding = 40;
+      
+  //-   //Set up our dataset.
+  //-   var dataset = [!{ppg_totals}];
+  //-   var names = "!{player_names}".split(",");
+  //-   console.log(names);
+      
+  //-   //Define your scales here
+  //-   var xScale = d3.scale.linear()
+  //-     .domain([0, dataset.length])
+  //-     .range([padding,(w-padding)]); 
+      
+  //-   var widthScale = d3.scale.linear()
+  //-     .domain([0, dataset.length])
+  //-     .range([0, (w-2*padding)]);  
+      
+  //-   var yScale = d3.scale.linear()
+  //-     .domain([0, 35])
+  //-     .range([h-padding,padding]);
+
+  //-   var heightScale = d3.scale.linear()
+  //-     .domain([0, 35])
+  //-     .range([0,h-2*padding]);
+
+      
+  //-   //Add a text element to our div
+  //-   //Clear out old content, then create an svg element that's w x h in size.
+  //-   d3.select("#viz1").selectAll("*").remove();  
+  //-   d3.select("#viz1").append("h3").text("Team Scoring Distribution")
+      
+  //-   var svg = d3.select("#viz1")
+  //-     .append("svg")
+  //-     .attr("width", w)
+  //-     .attr("height", h+100);
+      
+  //-   //Bind our data to SVG and create a rectangle for each one
+  //-   //This is where the magic happens!
+  //-   var bars = svg.selectAll("rect")
+  //-     .data(dataset)
+  //-     .enter()
+  //-     .append("rect");
+      
+
+  //-   //For each bar, set its attributes as a function of its position
+  //-   //in the dataset and 
+  //-   bars.attr("x", function(d, i) { return xScale(i); })
+  //-     .attr("width", widthScale(0.8))
+  //-     .attr("fill", "steelblue")
+  //-     .attr("y", function(d) { return yScale(d); })
+  //-     .attr("height", function(d) {return heightScale(d); })
+
+  //-   var yAxis = d3.svg.axis()
+  //-   .scale(yScale)
+  //-   .orient("left")
+  //-   .ticks(5)
+  //-   svg.append("text")
+  //-       .attr("text-anchor", "end")
+  //-       .attr("y", 0)
+  //-       .attr("x",-h/3)
+  //-       .attr("dy", ".75em")
+  //-       .attr("transform", "rotate(-90)")
+  //-       .text("Points Per Game");
+  //-   svg.append("g")
+  //-       .attr("class", "axis")
+  //-       .attr("transform", "translate(" + xScale(0) + ",0)")
+  //-       .call(yAxis)
+  //-   var xAxis = d3.svg.axis()
+  //-   .scale(xScale)
+  //-   .tickFormat(function(d,i){
+  //-     return names[i]
+  //-   })
+  //-   .orient("bottom")
+  //-   .ticks(dataset.length)
+
+  //-   svg.append("g")
+  //-       .attr("class", "axis")
+  //-       .attr("transform", "translate(0,"+yScale(0)+")")
+  //-       .call(xAxis)
+
+  //-     .selectAll("text")
+  //-       .attr("y", 0)
+  //-       .attr("x", 14)
+  //-       .attr("dy", ".35em")
+  //-       .attr("transform", "rotate(60)")
+  //-       .style("text-anchor", "start");
+  //-   //Create a tooltip.
+  //-   var tip = d3.select("#viz1")
+  //-     .append("div")
+  //-     .attr("id", "tooltip");
+      
+  //-   tip.append("p")
+  //-     .attr("id", "value")
+  //-     .style("text-align", "center");
+    
+  //-   tip
+  //-     .style("background-color", "white")
+  //-     .style("position", "absolute")
+  //-     .style("border", "1px solid")
+  //-     .style("display","None")
+  //-     .style("padding", "3px");
+
+  //-   svg.selectAll('rect').on("mouseover", function(d,i) {
+  //-     tip
+  //-       .style("left", (padding+xScale(i))+"px")
+  //-       .style("top", yScale(d/2)+"px")
+  //-       .style("display", null)
+  //-       .select("#value")
+  //-       .text(d3.round(d,2) + " ppg");
+
+  //-     d3.select(this).attr("fill", "#ccc");
+  //-   }).on("mouseout",function(d,i){
+  //-     tip
+  //-       .style("display", "None")
+  //-     d3.select(this).attr("fill", "steelblue");
+  //-   })  
+
+  script(type="text/javascript").
+    var options = {
+      valueNames: [ "game_date", "minutes", "points", "assists", "rebounds", "blocks", "steals", "turnovers", "fgm", "fga", "ftm", "fta", "fg3_made", "fg3_attempted", "personal_fouls"]
+    };
+
+    var hackerList = new List('valueList', options);
+    console.log(hackerList);

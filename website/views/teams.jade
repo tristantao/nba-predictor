@@ -11,8 +11,9 @@ block content
         .row.placeholders
           each team in teams
             .col-xs-6.col-sm-3.placeholder
-              img.img-responsive(src='/b/images/'+team.logo, alt=team.team_name+" Logo")
-              h4=team.team_city + " " + team.team_name
-              span.text-muted=team.division
+              a(href="/b/teams/"+team.team_city)
+                img.img-responsive(src='/b/images/'+team.logo, alt=team.team_name+" Logo")
+                h4=team.team_city + " " + team.team_name
+                span.text-muted=team.division
           
   include inc/foot

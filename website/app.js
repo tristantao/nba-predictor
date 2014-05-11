@@ -32,17 +32,20 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // development only
 if ('development' == app.get('env')) {
-  	app.use(express.errorHandler());
+  app.use(express.errorHandler());
 
 	app.use('/b/',app.router);
 	app.use('/b/',express.static(path.join(__dirname, 'public')));
 
 }
 
-app.get('/', routes.index);
+app.get('/', teams.index);
 app.get('/teams', teams.index);
+app.get('/teams/:team_id', teams.single);
 app.get('/games', games.index);
+app.get('/games/:game_id', games.single);
 app.get('/players',players.index);
+app.get('/players/:player_id',players.single);
 app.get('/model',model.index);
 
 db

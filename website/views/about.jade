@@ -1,0 +1,43 @@
+extends layout
+
+block content
+
+  include inc/nav
+  .container-fluid
+    .row
+      include inc/sidebar
+      .col-sm-9.col-sm-offset-3.col-md-10.col-md-offset-2.main
+        h1.page-header About
+        .row
+          .col-md-6
+            p
+
+            |1) Overview of your project - what problem(s) are you solving, who are your intended users?
+            |2) Related systems - things you've seen that inspired you and how your stuff differs
+            |We’ve seen some recommendatino systems, but none of them have been this easy to use.
+            |3) Description of tools used
+            |We used R (library(e1071) + lm), yhat, python, python libs to scrape web data.a
+            |
+            |4) Description of data sets, where you got them, schemas, sizes, etc
+            |We wrote a web scraper that collected box score data from NBA.com and Yahoo Sports. We ran the scraper for all games dating back to the 2010-2011 season. The entire dataset consisted of about 2,300 games (~10Mb). The files were stored in csv format and contained meta information about the game date, teams involved, player names as well as player statistics (minutes played, field goals made, assists, etc..). We also uploaded this information into a MySQL for the front end website visualizations. 
+            |
+            |
+            |5) Data cleaning, integration, munging etc you needed to do and how you did that
+            |We did a bunch of table joins to get the individual game (each game came in a single csv) to a large table that can be worked on.
+            |
+            |Luckily, the box score data we scraped from the web was already semi-formatted (html tables) so we did not have to do a lot of cleaning. The minimal cleaning we did involved splitting a formatted statistic such as field goals (2-3) into its constituent parts, fields goals made (2) and field goals attempted (3). Another thing we needed to keep track of is preseason, regular, and postseason games. 
+            |
+            |6) Data products produced
+            |Automated data scraping.
+            |deployed predictive models (svm, lm, NaiveBayes) in the cloud (standalone). R code to query the model in the cloud. Python wrapper to query the models.
+            |Setup website for people to use.
+            |Front end NBA data visualization. 
+            |everything is standalone.
+            |7) Problems you encountered, how you addressed them
+            |yhat was a pain to work with; model deployment took a while. setting up a easy to use framework that is modularized and enables easy addition of features was painful. connecting the languages was a pain too.
+            |8) Open Issues, Extensions you'd like to see, any future work
+            |in terms of cloud models, svm and NaiveBayes doesn’t work properly from the python wrapper (works well with the original R code to query the models). Future work:
+            |- automatically see if new data is available.
+
+          
+  include inc/foot

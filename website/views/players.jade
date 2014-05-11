@@ -25,7 +25,8 @@ block content
                 tr
                   td
                     img(src="/b/images/"+player.logo)
-                  td.name= player.player_name
+                  td.name
+                    a(href="/b/players/"+player.player_name)= player.player_name
                   td.team= player.team
                   td.points= player.avg_points
                   td.rebounds= player.avg_rebounds

@@ -1,0 +1,107 @@
+extends layout
+
+block content
+
+  include inc/nav
+  .container-fluid
+    .row
+      include inc/sidebar
+      .col-sm-9.col-sm-offset-3.col-md-10.col-md-offset-2.main
+        h1.page-header=home_team +" vs "+away_team
+        h2=home_team
+        table.table.table-striped(id="valueList")
+          thead
+            tr
+              th.sort(data-sort="team") Team
+              th.sort(data-sort="player") Player
+              th.sort(data-sort="minutes") Minutes
+              th.sort(data-sort="points") Points
+              th.sort(data-sort="assists") Assists
+              th.sort(data-sort="rebounds") Rebounds
+              th.sort(data-sort="blocks") Blocks
+              th.sort(data-sort="steals") Steals
+              th.sort(data-sort="turnovers") TO
+              th.sort(data-sort="fgm") FGM
+              th.sort(data-sort="fga") FGA
+              th.sort(data-sort="ftm") FTM
+              th.sort(data-sort="fta") FTA
+              th.sort(data-sort="fg3_made") 3PTM
+              th.sort(data-sort="fg3_attempted") 3PTA
+              th.sort(data-sort="personal_fouls") Fouls
+          tbody.list
+            each game in homeData
+              tr
+                td.team
+                  a(href="/b/teams/"+game.team)= game.team
+                td.player
+                  a(href="/b/players/"+game.player_name)= game.player_name
+                td.minutes= game.dataValues.minutes_played
+                td.points= game.dataValues.points
+                td.assists= game.dataValues.assists
+                td.rebounds= game.dataValues.total_rebounds
+                td.blocks= game.dataValues.blocked_shots
+                td.steals= game.dataValues.steals
+                td.turnovers=game.dataValues.turnovers
+                td.fgm= game.dataValues.fg_made
+                td.fga= game.dataValues.fg_attempted
+                td.ftm= game.dataValues.ft_made
+                td.fta= game.dataValues.ft_attempted
+                td.fg3_made= game.dataValues['3pt_made']
+                td.fg3_attempted= game.dataValues['3pt_attempted']
+                td.personal_fouls=game.dataValues.personal_fouls
+        h2=away_team
+        table.table.table-striped(id="valueList2")
+          thead
+            tr
+              th.sort(data-sort="team") Team
+              th.sort(data-sort="player") Player
+              th.sort(data-sort="minutes") Minutes
+              th.sort(data-sort="points") Points
+              th.sort(data-sort="assists") Assists
+              th.sort(data-sort="rebounds") Rebounds
+              th.sort(data-sort="blocks") Blocks
+              th.sort(data-sort="steals") Steals
+              th.sort(data-sort="turnovers") TO
+              th.sort(data-sort="fgm") FGM
+              th.sort(data-sort="fga") FGA
+              th.sort(data-sort="ftm") FTM
+              th.sort(data-sort="fta") FTA
+              th.sort(data-sort="fg3_made") 3PTM
+              th.sort(data-sort="fg3_attempted") 3PTA
+              th.sort(data-sort="personal_fouls") Fouls
+          tbody.list
+            each game in awayData
+              tr
+                td.team
+                  a(href="/b/teams/"+game.team)= game.team
+                td.player
+                  a(href="/b/players/"+game.player_name)= game.player_name
+                td.minutes= game.dataValues.minutes_played
+                td.points= game.dataValues.points
+                td.assists= game.dataValues.assists
+                td.rebounds= game.dataValues.total_rebounds
+                td.blocks= game.dataValues.blocked_shots
+                td.steals= game.dataValues.steals
+                td.turnovers=game.dataValues.turnovers
+                td.fgm= game.dataValues.fg_made
+                td.fga= game.dataValues.fg_attempted
+                td.ftm= game.dataValues.ft_made
+                td.fta= game.dataValues.ft_attempted
+                td.fg3_made= game.dataValues['3pt_made']
+                td.fg3_attempted= game.dataValues['3pt_attempted']
+                td.personal_fouls=game.dataValues.personal_fouls
+  include inc/foot
+  script(src="/b/javascripts/d3.min.js")  
+  script(type="text/javascript").    
+    //- //Setup local variables.
+    //- homeDataset = [!{homeScores}]
+    //- console.log(homeDataset)
+    //- d3.selectAll("#viz1").append("h2").text("hi")
+  script(type="text/javascript").
+    var options = {
+      valueNames: [ "game_date", "minutes", "points", "assists", "rebounds", "blocks", "steals", "turnovers", "fgm", "fga", "ftm", "fta", "fg3_made", "fg3_attempted", "personal_fouls"]
+    };
+
+    var hackerList = new List('valueList', options);
+    var hackerList = new List('valueList2', options);
+    console.log(hackerList);

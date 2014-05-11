@@ -18,7 +18,8 @@ block content
             tbody
               each game in games
                 tr
-                  td= game[0].formattedGameDate
+                  td
+                    a(href="/b/games/"+game[0].game_id)= game[0].formattedGameDate
                   td= game[0].team
                   td= game[1].team
   include inc/foot
