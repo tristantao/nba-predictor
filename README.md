@@ -45,7 +45,6 @@ python predict_game.py "New York" "Toronto" "2014-05-06" "lm"
 ```
 You can also import _predict_game.py_ and call the predict\_game.run\_model(...) to use it to better interate.
 
-###### *_Note that currently only the lm model works through the wrapper, the other models work through the raw R src._*
 
 
 
